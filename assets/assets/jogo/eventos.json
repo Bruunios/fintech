@@ -1,0 +1,5563 @@
+{
+  "titulo": "FinTech",
+  "idadeFinal": 65,
+  "inicial": {
+    "dinheiro": 500,
+    "felicidade": 60
+  },
+  "eventos": [
+    {
+      "id": "fim_escola",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "escola",
+      "titulo": "Fim do ensino médio",
+      "texto": "Você terminou a escola! Ainda mora com seus pais e tem R$ 500 guardados. O que vem agora?",
+      "escolhas": [
+        {
+          "texto": "ENEM pra faculdade pública",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "enem",
+            "meta": 3
+          },
+          "definir": {
+            "renda": 1200,
+            "custo": 600
+          },
+          "somar": {
+            "felicidade": 5,
+            "estresse": 5
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "sorte": {
+            "chance": 0.65,
+            "sucesso": {
+              "somar": {
+                "felicidade": 5
+              },
+              "resultado": "APROVADO na federal! Estágio de {salario:1200}/mês. Pouco agora, mas o diploma vai valer a pena."
+            },
+            "fracasso": {
+              "somar": {
+                "divida": 15000,
+                "felicidade": -5
+              },
+              "resultado": "A nota não deu pra federal. Você foi pra uma particular com FIES: R$ 15 mil de dívida, e estágio de {salario:1200}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Trabalhar direto",
+          "definir": {
+            "renda": 1800,
+            "custo": 700
+          },
+          "resultado": "Primeiro emprego com carteira assinada: {salario:1800}/mês. Dinheiro no bolso desde já!",
+          "somar": {
+            "estresse": 5
+          }
+        },
+        {
+          "texto": "Curso técnico pago",
+          "somar": {
+            "dinheiro": -3000
+          },
+          "definir": {
+            "renda": 1300,
+            "custo": 700
+          },
+          "flags": [
+            "tecnico"
+          ],
+          "resultado": "O curso custou R$ 3.000 e você trabalha meio período por {salario:1300}/mês enquanto estuda."
+        }
+      ],
+      "bloqueia": [
+        "facil",
+        "dificil"
+      ]
+    },
+    {
+      "id": "herdeiro_inicio",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "mansao",
+      "titulo": "O herdeiro decide",
+      "texto": "Formatura no colégio bilíngue. Seu pai quer que você assuma uma das concessionárias da família, mas você tem outros planos...",
+      "requer": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Assumir a concessionária",
+          "definir": {
+            "renda": 8000,
+            "custo": 3000
+          },
+          "somar": {
+            "estresse": 15
+          },
+          "resultado": "Diretoria aos 18: salário de {salario:8000}/mês e gastos de quem vive bem."
+        },
+        {
+          "texto": "Faculdade no exterior",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "ingles",
+            "meta": 3
+          },
+          "definir": {
+            "renda": 1500,
+            "custo": 1500
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "sorte": {
+            "chance": 0.7,
+            "sucesso": {
+              "somar": {
+                "dinheiro": -120000,
+                "felicidade": 10
+              },
+              "resultado": "Aprovado em Boston! Quatro anos fora custaram R$ 120 mil, mas o diploma internacional vai abrir portas. Mesada de {salario:1500}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "dinheiro": -40000,
+                "felicidade": -5
+              },
+              "resultado": "Reprovado no teste de inglês. Ficou numa faculdade particular de elite em São Paulo: R$ 40 mil. Mesada de {salario:1500}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Ano sabático pelo mundo",
+          "somar": {
+            "dinheiro": -60000,
+            "felicidade": 20,
+            "estresse": -20
+          },
+          "definir": {
+            "renda": 3000,
+            "custo": 1200
+          },
+          "resultado": "Tailândia, Peru, Islândia... R$ 60 mil em memórias. Na volta, seu pai te arruma um cargo de {salario:3000}/mês."
+        }
+      ]
+    },
+    {
+      "id": "periferia_inicio",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "comunidade",
+      "titulo": "Ajudar em casa",
+      "texto": "Você terminou o ensino médio na escola estadual do bairro. Sua mãe precisa de ajuda com as contas e as oportunidades são poucas.",
+      "requer": [
+        "dificil"
+      ],
+      "escolhas": [
+        {
+          "texto": "ENEM e faculdade com bolsa",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "enem",
+            "meta": 3
+          },
+          "somar": {
+            "estresse": 15
+          },
+          "definir": {
+            "renda": 1300
+          },
+          "sorte": {
+            "chance": 0.4,
+            "sucesso": {
+              "flags": [
+                "faculdade_noturna"
+              ],
+              "somar": {
+                "felicidade": 10
+              },
+              "resultado": "Bolsa integral pelo ProUni! Você trabalha de dia ({salario:1300}/mês) e estuda à noite."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Não passou desta vez. Arrumou emprego de atendente por {salario:1300}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Carteira assinada",
+          "definir": {
+            "renda": 1500
+          },
+          "somar": {
+            "estresse": 5
+          },
+          "resultado": "Repositor no supermercado: {salario:1500}/mês. Pouco, mas é certo."
+        },
+        {
+          "texto": "Bicos pra ajudar em casa",
+          "definir": {
+            "renda": 1100
+          },
+          "somar": {
+            "estresse": 10,
+            "felicidade": 5
+          },
+          "resultado": "Faxina, entrega, ajudante de pedreiro... Uns {salario:1100}/mês e sua mãe respira um pouco."
+        }
+      ]
+    },
+    {
+      "id": "medio_pai_desempregado",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "casa",
+      "bloqueia": [
+        "facil",
+        "dificil"
+      ],
+      "titulo": "A casa apertou",
+      "texto": "Seu pai continua procurando emprego e as contas de casa estão atrasando. O que você faz agora que terminou a escola?",
+      "escolhas": [
+        {
+          "texto": "Trabalhar e ajudar em casa",
+          "definir": {
+            "renda": 1800,
+            "custo": 900
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": 10
+          },
+          "resultado": "Telemarketing: {salario:1800}/mês, e uma parte vai pra conta de luz de casa."
+        },
+        {
+          "texto": "Trabalho + faculdade EAD",
+          "definir": {
+            "renda": 1500,
+            "custo": 800
+          },
+          "somar": {
+            "estresse": 15
+          },
+          "flags": [
+            "faculdade_noturna"
+          ],
+          "resultado": "De dia, auxiliar administrativo por {salario:1500}/mês. À noite, faculdade online. Puxado."
+        },
+        {
+          "texto": "ENEM pra federal mesmo assim",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "enem",
+            "meta": 3
+          },
+          "somar": {
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.55,
+            "sucesso": {
+              "definir": {
+                "renda": 900,
+                "custo": 500
+              },
+              "flags": [
+                "faculdade"
+              ],
+              "somar": {
+                "felicidade": 12
+              },
+              "resultado": "APROVAD{O} na federal! Bolsa de monitoria de {salario:900}/mês. Seu pai chorou de orgulho."
+            },
+            "fracasso": {
+              "definir": {
+                "renda": 1600,
+                "custo": 800
+              },
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Não passou. Arrumou emprego de repositor por {salario:1600}/mês."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "medio_vestibular_fora",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "aeroporto",
+      "bloqueia": [
+        "facil",
+        "dificil"
+      ],
+      "titulo": "A 500 km de casa",
+      "texto": "A matrícula na faculdade de outra cidade vence semana que vem. Seus pais esperam sua decisão.",
+      "escolhas": [
+        {
+          "texto": "Ir e morar em república",
+          "definir": {
+            "renda": 900,
+            "custo": 900
+          },
+          "somar": {
+            "felicidade": 12,
+            "estresse": 5
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "resultado": "República com mais cinco estudantes e estágio de {salario:900}/mês. Liberdade!"
+        },
+        {
+          "texto": "Ficar e trabalhar na loja do tio",
+          "definir": {
+            "renda": 1700,
+            "custo": 500
+          },
+          "somar": {
+            "felicidade": -5
+          },
+          "resultado": "Vendedor na loja do tio por {salario:1700}/mês, morando com os pais e sem aluguel."
+        },
+        {
+          "texto": "Curso técnico na cidade",
+          "somar": {
+            "dinheiro": -3000
+          },
+          "definir": {
+            "renda": 1300,
+            "custo": 700
+          },
+          "flags": [
+            "tecnico"
+          ],
+          "resultado": "Técnico em informática e meio período por {salario:1300}/mês."
+        }
+      ]
+    },
+    {
+      "id": "herdeiro_divorcio",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "mansao",
+      "requer": [
+        "facil"
+      ],
+      "titulo": "Cabo de guerra",
+      "texto": "Seu pai quer que você trabalhe com ele na empresa. Sua mãe quer que você estude. Os dois esperam sua resposta no mesmo jantar.",
+      "escolhas": [
+        {
+          "texto": "Trabalhar com o pai",
+          "definir": {
+            "renda": 7000,
+            "custo": 2500
+          },
+          "somar": {
+            "estresse": 15
+          },
+          "resultado": "Diretor comercial aos 18: {salario:7000}/mês. O clima em casa? Tenso."
+        },
+        {
+          "texto": "Estudar, como a mãe quer",
+          "definir": {
+            "renda": 1500,
+            "custo": 1500
+          },
+          "somar": {
+            "felicidade": 5
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "resultado": "Faculdade particular de ponta e mesada de {salario:1500}/mês."
+        },
+        {
+          "texto": "Sair de casa e se virar",
+          "definir": {
+            "renda": 2500,
+            "custo": 2000
+          },
+          "somar": {
+            "felicidade": 10,
+            "estresse": 5
+          },
+          "resultado": "Apartamento alugado e emprego numa startup por {salario:2500}/mês. Independência!"
+        }
+      ]
+    },
+    {
+      "id": "herdeiro_crise",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "escritorio",
+      "requer": [
+        "facil"
+      ],
+      "titulo": "Salvar o império?",
+      "texto": "Seu avô abre os balanços na mesa: três lojas no vermelho e uma dívida com o banco. \"Preciso de sangue novo\", ele diz.",
+      "escolhas": [
+        {
+          "texto": "Assumir e reestruturar",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "negocios",
+            "meta": 3
+          },
+          "definir": {
+            "renda": 6000,
+            "custo": 2500
+          },
+          "somar": {
+            "estresse": 20
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 4000,
+                "felicidade": 15
+              },
+              "flags": [
+                "empreendedor"
+              ],
+              "resultado": "Você cortou custos, renegociou e salvou a empresa! Seu salário sobe pra {salario:10000}/mês."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.5
+              },
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "Não deu. Duas lojas fecharam e seu fundo cobriu o prejuízo: seus investimentos caíram pela metade. Salário de {salario:6000}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Ficar fora e ir pra faculdade",
+          "definir": {
+            "renda": 1500,
+            "custo": 1500
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "resultado": "Você deixa os problemas pros adultos. Faculdade e mesada de {salario:1500}/mês."
+        },
+        {
+          "texto": "Vender sua parte pro tio",
+          "somar": {
+            "dinheiro": 150000,
+            "felicidade": -5
+          },
+          "definir": {
+            "renda": 3000,
+            "custo": 1500
+          },
+          "resultado": "R$ 150 mil na conta e uma família magoada. Emprego de {salario:3000}/mês num banco."
+        }
+      ]
+    },
+    {
+      "id": "periferia_mae_doente",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "hospital",
+      "requer": [
+        "dificil"
+      ],
+      "titulo": "Agora é com você",
+      "texto": "Sua mãe precisa de repouso e remédios. Os boletos não esperam.",
+      "escolhas": [
+        {
+          "texto": "Trabalhar em dois empregos",
+          "definir": {
+            "renda": 2000
+          },
+          "somar": {
+            "custo": 300,
+            "estresse": 20,
+            "saude": -5
+          },
+          "resultado": "Dois empregos: {salario:2000}/mês e quase nenhuma hora de sono."
+        },
+        {
+          "texto": "Um emprego e cuidar dela",
+          "definir": {
+            "renda": 1400
+          },
+          "somar": {
+            "custo": 300,
+            "felicidade": 5,
+            "estresse": 10
+          },
+          "resultado": "Caixa de mercado por {salario:1400}/mês e as noites cuidando da sua mãe."
+        },
+        {
+          "texto": "Pedir um benefício no INSS",
+          "definir": {
+            "renda": 1400
+          },
+          "somar": {
+            "custo": 300,
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 700,
+                "felicidade": 8
+              },
+              "resultado": "Benefício aprovado! Mais {salario:700}/mês pra casa, além do seu emprego de {salario:1400}."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Negado. O recurso pode levar anos. Você segue no emprego de {salario:1400}/mês."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "periferia_peneira",
+      "idade": 18,
+      "grupo": "inicio",
+      "cenario": "cidade",
+      "requer": [
+        "dificil"
+      ],
+      "titulo": "A peneira",
+      "texto": "O olheiro deixa um cartão: peneira no clube, sábado de manhã. Dezenas de garotos e garotas, poucas vagas.",
+      "escolhas": [
+        {
+          "texto": "Fazer a peneira",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "penalti",
+            "meta": 2
+          },
+          "somar": {
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "definir": {
+                "renda": 3500
+              },
+              "somar": {
+                "felicidade": 20
+              },
+              "flags": [
+                "jogador"
+              ],
+              "resultado": "PASSOU NA PENEIRA! Contrato na base do clube: {salario:3500}/mês. O bairro inteiro comemorou."
+            },
+            "fracasso": {
+              "definir": {
+                "renda": 1300
+              },
+              "somar": {
+                "felicidade": -8
+              },
+              "resultado": "Não foi dessa vez. Você arrumou emprego de entregador de gás por {salario:1300}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Preciso trabalhar",
+          "definir": {
+            "renda": 1500
+          },
+          "somar": {
+            "estresse": 5,
+            "felicidade": -3
+          },
+          "resultado": "Repositor no mercado por {salario:1500}/mês. O campinho fica pros domingos."
+        }
+      ]
+    },
+    {
+      "id": "cartao",
+      "idade": 19,
+      "grupo": "credito19",
+      "cenario": "loja",
+      "titulo": "O primeiro cartão",
+      "texto": "Chegou seu primeiro cartão de crédito, com um limite generoso. Na vitrine, aquele celular top de linha em 12x...",
+      "escolhas": [
+        {
+          "texto": "Comprar o celular parcelado",
+          "somar": {
+            "divida": 6000,
+            "felicidade": 10
+          },
+          "resultado": "Celular novo! Mas agora você deve R$ 6.000, e a dívida cresce 15% ao ano até ser paga."
+        },
+        {
+          "texto": "Usar só pro essencial",
+          "somar": {
+            "felicidade": 2
+          },
+          "resultado": "Você paga a fatura inteira todo mês. Zero juros, zero dor de cabeça."
+        },
+        {
+          "texto": "Cortar o cartão no meio",
+          "somar": {
+            "felicidade": -2
+          },
+          "resultado": "Sem cartão, sem tentação. Às vezes faz falta, mas o bolso agradece."
+        }
+      ]
+    },
+    {
+      "id": "crediario",
+      "idade": 19,
+      "grupo": "credito19",
+      "cenario": "loja",
+      "titulo": "Crediário da loja",
+      "texto": "A loja do bairro oferece uma TV de 55\" em 18 parcelas no carnê, \"sem consulta ao SPC\".",
+      "escolhas": [
+        {
+          "texto": "Levar no carnê",
+          "somar": {
+            "divida": 3400,
+            "felicidade": 8
+          },
+          "resultado": "TV nova na sala! São R$ 3.400 em carnê, com os juros escondidos nas parcelas."
+        },
+        {
+          "texto": "Guardar e pagar à vista",
+          "somar": {
+            "dinheiro": -1800,
+            "felicidade": 5
+          },
+          "resultado": "Seis meses guardando e você levou com 20% de desconto à vista: R$ 1.800."
+        },
+        {
+          "texto": "A TV velha ainda funciona",
+          "resultado": "E o dinheiro continua seu."
+        }
+      ]
+    },
+    {
+      "id": "conta_digital",
+      "idade": 19,
+      "grupo": "credito19",
+      "cenario": "banco",
+      "titulo": "Tarifa escondida",
+      "texto": "Você percebe que seu banco cobra R$ 45 por mês de \"pacote de serviços\". Um banco digital oferece conta sem tarifa.",
+      "escolhas": [
+        {
+          "texto": "Migrar pro banco digital",
+          "somar": {
+            "custo": -45,
+            "felicidade": 2
+          },
+          "resultado": "R$ 45 a menos por mês. Em 40 anos, isso vira um bom dinheiro."
+        },
+        {
+          "texto": "Pedir o cartão de crédito do banco também",
+          "somar": {
+            "divida": 2000,
+            "felicidade": 5
+          },
+          "resultado": "Limite alto e algumas compras por impulso: R$ 2.000 de fatura que você não conseguiu pagar inteira."
+        },
+        {
+          "texto": "Deixar como está",
+          "resultado": "O gerente agradece. Seu bolso, nem tanto."
+        }
+      ]
+    },
+    {
+      "id": "primeira_grana",
+      "idade": 20,
+      "grupo": "grana20",
+      "cenario": "banco",
+      "titulo": "Dinheiro sobrando",
+      "texto": "Pela primeira vez sobrou um dinheirinho na conta no fim do mês. O que fazer com ele?",
+      "escolhas": [
+        {
+          "texto": "Investir 80% num CDB",
+          "investirPct": 0.8,
+          "resultado": "Seu dinheiro agora rende juros compostos todo ano. Quanto antes, melhor!"
+        },
+        {
+          "texto": "Mochilão com os amigos",
+          "somar": {
+            "dinheiro": -4000,
+            "felicidade": 15
+          },
+          "resultado": "Uma viagem inesquecível! Gastou R$ 4.000, mas as fotos ficaram incríveis."
+        },
+        {
+          "texto": "Deixar parado na conta",
+          "resultado": "O dinheiro fica lá, parado. A inflação agradece."
+        }
+      ]
+    },
+    {
+      "id": "bet_influencer",
+      "idade": 20,
+      "cenario": "cassino",
+      "titulo": "Tigrinho da Sorte",
+      "texto": "Seu influenciador favorito posta: \"Ganhei R$ 5 mil em 10 minutos no Tigrinho da Sorte! Link na bio!\"",
+      "escolhas": [
+        {
+          "texto": "Testar com R$ 50",
+          "cassino": true,
+          "somar": {
+            "dinheiro": -50
+          },
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.35,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 150,
+                "felicidade": 5
+              },
+              "flags": [
+                "viciado_bet"
+              ],
+              "resultado": "Ganhou R$ 150! Seu coração disparou... é exatamente assim que eles te fisgam."
+            },
+            "fracasso": {
+              "resultado": "Perdeu os R$ 50. \"Na próxima eu recupero...\""
+            }
+          }
+        },
+        {
+          "texto": "APOSTAR TUDO pra dobrar",
+          "cassino": true,
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.01,
+            "sucesso": {
+              "multiplicar": {
+                "dinheiro": 2,
+                "investimentos": 2
+              },
+              "somar": {
+                "felicidade": 30
+              },
+              "flags": [
+                "dobrou_tigrinho",
+                "viciado_bet"
+              ],
+              "resultado": "O TIGRINHO SOLTOU A CARTA! Você DOBROU tudo o que tinha! A chance era de 1%... não tente de novo."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "dinheiro": 0,
+                "investimentos": 0
+              },
+              "somar": {
+                "felicidade": -25,
+                "estresse": 30
+              },
+              "flags": [
+                "quebrou_tigrinho"
+              ],
+              "resultado": "Perdeu TUDO. Saldo e investimentos zerados em 30 segundos. A casa sempre ganha."
+            }
+          }
+        },
+        {
+          "texto": "Passar longe",
+          "somar": {
+            "felicidade": 2
+          },
+          "flags": [
+            "recusou_bet"
+          ],
+          "resultado": "Casa de aposta não é investimento: é entretenimento caro. E vicia."
+        }
+      ]
+    },
+    {
+      "id": "cursinho",
+      "idade": 20,
+      "cenario": "escola",
+      "titulo": "Cursinho popular",
+      "texto": "Abriu um cursinho popular gratuito na associação de moradores, com professores voluntários.",
+      "requer": [
+        "dificil"
+      ],
+      "bloqueia": [
+        "faculdade",
+        "faculdade_noturna"
+      ],
+      "escolhas": [
+        {
+          "texto": "Estudar à noite pro ENEM",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "enem",
+            "meta": 3
+          },
+          "somar": {
+            "estresse": 15,
+            "saude": -3
+          },
+          "sorte": {
+            "chance": 0.45,
+            "sucesso": {
+              "flags": [
+                "faculdade_noturna"
+              ],
+              "somar": {
+                "felicidade": 15
+              },
+              "resultado": "PASSOU! Faculdade pública à noite. O primeiro da família!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Faltaram poucos pontos. Cansaço de quem trabalha o dia todo."
+            }
+          }
+        },
+        {
+          "texto": "Não dá, preciso trabalhar",
+          "somar": {
+            "felicidade": -3
+          },
+          "resultado": "O boleto não espera."
+        }
+      ]
+    },
+    {
+      "id": "freela",
+      "idade": 20,
+      "grupo": "grana20",
+      "cenario": "escritorio",
+      "titulo": "Freela pago",
+      "texto": "Você fez um trabalho extra no fim de semana e caíram R$ 3.000 na conta!",
+      "escolhas": [
+        {
+          "texto": "Investir no Tesouro",
+          "somar": {
+            "dinheiro": 3000
+          },
+          "investirPct": 0.7,
+          "resultado": "Tesouro Selic: seguro e rendendo todo dia."
+        },
+        {
+          "texto": "Fazer um curso pra ganhar mais",
+          "somar": {
+            "renda": 300,
+            "felicidade": 3
+          },
+          "resultado": "Curso de Excel avançado e um aumento de {salario:300}/mês."
+        },
+        {
+          "texto": "Festão de aniversário",
+          "somar": {
+            "felicidade": 10,
+            "estresse": -5
+          },
+          "resultado": "Festa com os amigos. Valeu cada centavo dos R$ 3.000."
+        }
+      ]
+    },
+    {
+      "id": "presente_avo",
+      "idade": 20,
+      "grupo": "grana20",
+      "cenario": "casa",
+      "titulo": "Presente da vó",
+      "texto": "Sua avó coloca um envelope na sua mão: R$ 5.000. \"Use com juízo!\"",
+      "escolhas": [
+        {
+          "texto": "Reserva de emergência",
+          "somar": {
+            "dinheiro": 5000,
+            "felicidade": 3
+          },
+          "investirPct": 0.8,
+          "resultado": "Agora você tem uma reserva rendendo. A vó aprovaria."
+        },
+        {
+          "texto": "Celular novo",
+          "somar": {
+            "felicidade": 8
+          },
+          "resultado": "Celular top! A vó nunca vai saber."
+        },
+        {
+          "texto": "Levar a vó pra viajar",
+          "somar": {
+            "felicidade": 12,
+            "estresse": -8
+          },
+          "resultado": "Uma semana na praia com ela. Memória pra vida toda."
+        }
+      ]
+    },
+    {
+      "id": "piramide",
+      "idade": 21,
+      "grupo": "golpe21",
+      "cenario": "rua",
+      "titulo": "Proposta irrecusável",
+      "texto": "Um amigo jura que achou um investimento que rende 10% AO MÊS. \"É só chamar mais gente!\", ele diz.",
+      "escolhas": [
+        {
+          "texto": "Entrar com tudo!",
+          "somar": {
+            "felicidade": 5
+          },
+          "sorte": {
+            "chance": 0.15,
+            "sucesso": {
+              "multiplicar": {
+                "dinheiro": 1.5,
+                "investimentos": 1.5
+              },
+              "resultado": "Você saiu uma semana antes de tudo desabar. Sorte pura. Não conte com isso de novo."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "dinheiro": 0,
+                "investimentos": 0
+              },
+              "somar": {
+                "felicidade": -20
+              },
+              "resultado": "Era uma pirâmide. O site saiu do ar e você perdeu TUDO o que tinha."
+            }
+          },
+          "flags": [
+            "caiu_piramide"
+          ]
+        },
+        {
+          "texto": "Desconfiar e pesquisar",
+          "somar": {
+            "felicidade": 2
+          },
+          "resultado": "Você descobriu que era pirâmide. Meses depois, seu amigo perdeu tudo. Ufa.",
+          "flags": [
+            "desconfiou_piramide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bico_mulher",
+      "idade": 21,
+      "cenario": "casa",
+      "titulo": "Um bico pra ajudar",
+      "texto": "Fim de mês apertado. Suas amigas sugerem uns bicos pra reforçar a renda.",
+      "requer": [
+        "mulher"
+      ],
+      "bloqueia": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Fazer unhas no fim de semana",
+          "somar": {
+            "renda": 600,
+            "estresse": 8
+          },
+          "resultado": "Manicure aos sábados: mais {salario:600}/mês."
+        },
+        {
+          "texto": "Vender bolo de pote",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "bolo",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -300,
+            "estresse": 5
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "somar": {
+                "renda": 900,
+                "felicidade": 8
+              },
+              "resultado": "Seus bolos de pote viraram febre no bairro: mais {salario:900}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "renda": 200
+              },
+              "resultado": "Vendeu menos que o esperado, mas ainda tira {salario:200}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Revender cosméticos",
+          "somar": {
+            "renda": 400,
+            "estresse": 3
+          },
+          "resultado": "Catálogo na bolsa: {salario:400}/mês de comissão."
+        },
+        {
+          "texto": "Descansar no fim de semana",
+          "somar": {
+            "estresse": -5
+          },
+          "resultado": "Descanso também é investimento."
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "idade": 21,
+      "cenario": "rua",
+      "titulo": "Entregas por app",
+      "texto": "Um amigo comprou uma moto e está fazendo entregas por aplicativo de delivery. Diz que dá pra tirar uma boa grana.",
+      "requer": [
+        "homem"
+      ],
+      "bloqueia": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Entregas de moto",
+          "minigame": {
+            "tipo": "corrida",
+            "tema": "entrega",
+            "meta": 3
+          },
+          "somar": {
+            "dinheiro": -8000,
+            "estresse": 15,
+            "saude": -5
+          },
+          "flags": [
+            "entregador"
+          ],
+          "resultado": "Moto usada de R$ 8.000 e o app instalado.",
+          "sorte": {
+            "chance": 0.7,
+            "sucesso": {
+              "somar": {
+                "renda": 1400
+              },
+              "resultado": "Entregas no prazo e nota 5 estrelas: mais {salario:1400}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "renda": 900,
+                "saude": -12
+              },
+              "resultado": "Derrapou na chuva e ficou umas semanas parado. Agora tira {salario:900}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Entregas de bike",
+          "minigame": {
+            "tipo": "corrida",
+            "tema": "entrega",
+            "meta": 3
+          },
+          "somar": {
+            "saude": 8,
+            "estresse": 8
+          },
+          "flags": [
+            "entregador"
+          ],
+          "resultado": "Bike revisada e bag nas costas.",
+          "sorte": {
+            "chance": 0.7,
+            "sucesso": {
+              "somar": {
+                "renda": 600
+              },
+              "resultado": "Pedalando pela cidade sem atrasos: mais {salario:600}/mês e pernas de atleta."
+            },
+            "fracasso": {
+              "somar": {
+                "renda": 400,
+                "saude": -6
+              },
+              "resultado": "Uns tombos e pedidos atrasados. Tira {salario:400}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Não, valeu",
+          "resultado": "Fica pra outra hora."
+        }
+      ]
+    },
+    {
+      "id": "curso_trader",
+      "idade": 21,
+      "grupo": "golpe21",
+      "cenario": "cidade",
+      "titulo": "Fique rico operando",
+      "texto": "Um influencer de carro importado vende um curso de day trade: \"Fique rico em 6 meses!\" Custa R$ 3.000.",
+      "escolhas": [
+        {
+          "texto": "Comprar o curso e operar",
+          "somar": {
+            "dinheiro": -3000,
+            "estresse": 10
+          },
+          "flags": [
+            "caiu_piramide"
+          ],
+          "sorte": {
+            "chance": 0.1,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 8000
+              },
+              "resultado": "Sorte nos primeiros trades: saiu no lucro. Melhor parar enquanto está ganhando."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.7
+              },
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "Perdeu o curso e mais 30% do que tinha investido. A maioria dos day traders perde dinheiro."
+            }
+          }
+        },
+        {
+          "texto": "Pesquisar antes",
+          "somar": {
+            "felicidade": 2
+          },
+          "flags": [
+            "desconfiou_piramide"
+          ],
+          "resultado": "O carro era alugado e o dinheiro dele vem... dos cursos."
+        }
+      ]
+    },
+    {
+      "id": "golpe_emprego",
+      "idade": 21,
+      "grupo": "golpe21",
+      "cenario": "escritorio",
+      "titulo": "Vaga dos sonhos",
+      "texto": "Uma vaga incrível, salário alto, sem experiência! Só precisa pagar R$ 800 adiantado pelo \"kit de uniforme e treinamento\".",
+      "escolhas": [
+        {
+          "texto": "Pagar e garantir a vaga",
+          "somar": {
+            "dinheiro": -800,
+            "felicidade": -8
+          },
+          "flags": [
+            "caiu_piramide"
+          ],
+          "resultado": "A empresa não existia. O telefone nunca mais atendeu."
+        },
+        {
+          "texto": "Recusar: empresa séria não cobra",
+          "somar": {
+            "felicidade": 2
+          },
+          "flags": [
+            "desconfiou_piramide"
+          ],
+          "resultado": "Você denunciou o anúncio. Semanas depois, a polícia prendeu a quadrilha."
+        }
+      ]
+    },
+    {
+      "id": "tecnico_formado",
+      "idade": 22,
+      "cenario": "escritorio",
+      "titulo": "Diploma de técnico",
+      "texto": "Você terminou o curso técnico! Uma empresa da área quer te contratar.",
+      "requer": [
+        "tecnico"
+      ],
+      "escolhas": [
+        {
+          "texto": "Aceitar a vaga",
+          "somar": {
+            "renda": 1700,
+            "felicidade": 8
+          },
+          "removerFlags": [
+            "tecnico"
+          ],
+          "resultado": "Salário subiu {salario:1700}/mês. O curso se pagou rapidinho."
+        }
+      ]
+    },
+    {
+      "id": "formatura",
+      "idade": 22,
+      "cenario": "escola",
+      "titulo": "Formatura!",
+      "texto": "Diploma na mão! Agora é hora de decidir o rumo da carreira.",
+      "requer": [
+        "faculdade"
+      ],
+      "escolhas": [
+        {
+          "texto": "Emprego em empresa grande",
+          "definir": {
+            "renda": 4500
+          },
+          "somar": {
+            "custo": 400,
+            "felicidade": 10
+          },
+          "resultado": "Contratado com salário de {salario:4500}/mês. A vida adulta começou!"
+        },
+        {
+          "texto": "Abrir uma startup",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "negocios",
+            "meta": 4
+          },
+          "somar": {
+            "dinheiro": -15000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "definir": {
+                "renda": 9000
+              },
+              "somar": {
+                "felicidade": 20
+              },
+              "resultado": "A startup decolou! Você tira {salario:9000}/mês como sócio.",
+              "flags": [
+                "empreendedor"
+              ]
+            },
+            "fracasso": {
+              "definir": {
+                "renda": 3500
+              },
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "Não deu certo. Você perdeu o investimento e voltou ao mercado ganhando {salario:3500}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Estudar pra concurso",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "concurso",
+            "meta": 3
+          },
+          "somar": {
+            "dinheiro": -6000,
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "Um ano estudando sem parar...",
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "definir": {
+                "renda": 5500
+              },
+              "flags": [
+                "concursado"
+              ],
+              "somar": {
+                "felicidade": 10
+              },
+              "resultado": "PASSOU! {salario:5500}/mês e estabilidade."
+            },
+            "fracasso": {
+              "definir": {
+                "renda": 3800
+              },
+              "resultado": "Bateu na trave. Arrumou emprego de {salario:3800}/mês enquanto pensa em tentar de novo."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trabalho_jovem",
+      "idade": 22,
+      "cenario": "escritorio",
+      "titulo": "Encruzilhada no trabalho",
+      "texto": "Você está há alguns anos no mesmo emprego. Seu chefe gosta de você, mas o salário anda devagar.",
+      "bloqueia": [
+        "faculdade",
+        "faculdade_noturna"
+      ],
+      "escolhas": [
+        {
+          "texto": "Faculdade à noite (EAD)",
+          "somar": {
+            "custo": 400,
+            "felicidade": -5
+          },
+          "flags": [
+            "faculdade_noturna"
+          ],
+          "resultado": "Trabalhar de dia e estudar à noite é puxado. Mensalidade de R$ 400."
+        },
+        {
+          "texto": "Fazer hora extra",
+          "somar": {
+            "renda": 700,
+            "felicidade": -10,
+            "estresse": 15,
+            "saude": -3
+          },
+          "resultado": "Mais {salario:700}/mês, mas você quase não vê mais seus amigos."
+        },
+        {
+          "texto": "Procurar outro emprego",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "entrevista",
+            "meta": 3
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 900,
+                "felicidade": 5
+              },
+              "resultado": "Achou uma vaga melhor: mais {salario:900}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -3
+              },
+              "resultado": "Nenhuma proposta melhor apareceu. Fica pra próxima."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "intercambio",
+      "idade": 23,
+      "grupo": "jovem23",
+      "cenario": "aeroporto",
+      "titulo": "Intercâmbio",
+      "texto": "Uma agência oferece seis meses de intercâmbio no Canadá por R$ 30.000. Inglês fluente abre muitas portas...",
+      "escolhas": [
+        {
+          "texto": "Fazer as malas!",
+          "somar": {
+            "dinheiro": -30000,
+            "renda": 600,
+            "felicidade": 15,
+            "estresse": -10
+          },
+          "resultado": "Inglês fluente e um currículo turbinado: mais {salario:600}/mês no salário. Se faltou dinheiro, virou dívida."
+        },
+        {
+          "texto": "Curso de inglês online",
+          "somar": {
+            "dinheiro": -1500,
+            "renda": 200,
+            "felicidade": 2
+          },
+          "resultado": "Mais devagar, mas funciona: mais {salario:200}/mês."
+        },
+        {
+          "texto": "Agora não",
+          "resultado": "Fica pra uma próxima vida."
+        }
+      ]
+    },
+    {
+      "id": "esporte",
+      "idade": 23,
+      "cenario": "cidade",
+      "titulo": "Bora se mexer?",
+      "texto": "Os amigos te chamam pro futebol de quarta e pra correr no parque no domingo.",
+      "escolhas": [
+        {
+          "texto": "Topar!",
+          "somar": {
+            "saude": 12,
+            "estresse": -10,
+            "felicidade": 5
+          },
+          "flags": [
+            "ativo"
+          ],
+          "resultado": "Fôlego, amigos e cabeça leve. Seu corpo agradece por anos."
+        },
+        {
+          "texto": "Prefiro o sofá",
+          "somar": {
+            "saude": -5,
+            "felicidade": 2
+          },
+          "resultado": "Série, pipoca e sedentarismo."
+        }
+      ]
+    },
+    {
+      "id": "bico_homem",
+      "idade": 23,
+      "cenario": "cidade",
+      "titulo": "Bico de fim de semana",
+      "texto": "O fim de semana está livre e a grana está curta...",
+      "requer": [
+        "homem"
+      ],
+      "bloqueia": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Servente de obra no sábado",
+          "somar": {
+            "renda": 700,
+            "saude": -5,
+            "estresse": 8
+          },
+          "resultado": "Massa, tijolo e sol na cabeça: mais {salario:700}/mês."
+        },
+        {
+          "texto": "Barraca de churrasquinho",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "churrasco",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -800,
+            "estresse": 5
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "somar": {
+                "renda": 1000,
+                "felicidade": 8
+              },
+              "resultado": "O espetinho virou ponto do bairro: mais {salario:1000}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "renda": 200
+              },
+              "resultado": "Movimento fraco. Ainda tira uns {salario:200}/mês."
+            }
+          }
+        },
+        {
+          "texto": "Lavar carro na rua",
+          "somar": {
+            "renda": 400,
+            "estresse": 3
+          },
+          "resultado": "Balde, sabão e freguesia fiel: mais {salario:400}/mês."
+        },
+        {
+          "texto": "Descansar",
+          "somar": {
+            "estresse": -5
+          },
+          "resultado": "Domingo é sagrado."
+        }
+      ]
+    },
+    {
+      "id": "festival",
+      "idade": 23,
+      "grupo": "jovem23",
+      "cenario": "festa",
+      "titulo": "Festival de música",
+      "texto": "Seus amigos vão pra um festival do outro lado do país. Ingresso, passagem e hospedagem: R$ 5.000.",
+      "escolhas": [
+        {
+          "texto": "Ir! Parcelado no cartão",
+          "somar": {
+            "divida": 5000,
+            "felicidade": 15,
+            "estresse": -10
+          },
+          "resultado": "Três dias inesquecíveis. E R$ 5.000 de fatura pra pagar."
+        },
+        {
+          "texto": "Guardar pro ano que vem",
+          "somar": {
+            "aporte": 0.02,
+            "felicidade": -3
+          },
+          "resultado": "Você criou uma caixinha automática no banco: 2% da renda todo mês."
+        },
+        {
+          "texto": "Assistir pela internet",
+          "somar": {
+            "felicidade": -5
+          },
+          "resultado": "Não é a mesma coisa..."
+        }
+      ]
+    },
+    {
+      "id": "bootcamp",
+      "idade": 23,
+      "grupo": "jovem23",
+      "cenario": "escritorio",
+      "titulo": "Virar programador?",
+      "texto": "Um bootcamp de programação promete vaga em tecnologia em 6 meses. Custa R$ 12.000.",
+      "escolhas": [
+        {
+          "texto": "Fazer o bootcamp",
+          "somar": {
+            "dinheiro": -12000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 2500,
+                "felicidade": 10
+              },
+              "resultado": "Primeira vaga de dev júnior: mais {salario:2500}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Terminou o curso, mas o mercado de júnior está difícil. Fica o aprendizado."
+            }
+          }
+        },
+        {
+          "texto": "Estudar sozinho, de graça",
+          "somar": {
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "somar": {
+                "renda": 1500,
+                "felicidade": 8
+              },
+              "resultado": "Muita madrugada de vídeo-aula, mas deu certo: freelas de mais {salario:1500}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -2
+              },
+              "resultado": "A rotina não deixou. Você parou no terceiro mês."
+            }
+          }
+        },
+        {
+          "texto": "Não é minha praia",
+          "resultado": "Cada um com seu talento."
+        }
+      ]
+    },
+    {
+      "id": "morar_sozinho",
+      "idade": 24,
+      "cenario": "casa",
+      "titulo": "Sair de casa?",
+      "texto": "Seus pais começam a perguntar quando você vai ter seu próprio canto...",
+      "escolhas": [
+        {
+          "texto": "Alugar um apê sozinho",
+          "somar": {
+            "custo": 1500,
+            "felicidade": 12
+          },
+          "resultado": "Liberdade total! E R$ 1.500/mês a mais de gastos entre aluguel e contas."
+        },
+        {
+          "texto": "Dividir apê com amigos",
+          "somar": {
+            "custo": 800,
+            "felicidade": 6
+          },
+          "resultado": "Bagunça e diversão. Gastos subiram R$ 800/mês."
+        },
+        {
+          "texto": "Ficar com os pais",
+          "somar": {
+            "felicidade": -8,
+            "estresse": 5
+          },
+          "resultado": "Você economiza bastante, mas a convivência anda complicada."
+        }
+      ]
+    },
+    {
+      "id": "agiota",
+      "idade": 24,
+      "cenario": "comunidade",
+      "titulo": "Dinheiro fácil",
+      "texto": "O agiota do bairro oferece R$ 5.000 na hora, \"sem consulta ao SPC\". Os juros? \"Só 20% ao mês.\"",
+      "requer": [
+        "dificil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Pegar o dinheiro",
+          "somar": {
+            "dinheiro": 5000,
+            "divida": 15000,
+            "estresse": 25
+          },
+          "flags": [
+            "agiota"
+          ],
+          "resultado": "Em poucos meses os R$ 5.000 viraram R$ 15.000 de dívida. E agiota não aceita atraso..."
+        },
+        {
+          "texto": "Recusar",
+          "somar": {
+            "estresse": -2
+          },
+          "resultado": "Melhor apertar o cinto do que dever pra agiota."
+        }
+      ]
+    },
+    {
+      "id": "jogador_lesao",
+      "idade": 24,
+      "cenario": "hospital",
+      "requer": [
+        "jogador"
+      ],
+      "titulo": "O joelho reclamou",
+      "texto": "Seu contrato com o clube está acabando e o joelho dói depois de cada jogo. O médico recomenda parar; o clube oferece renovação.",
+      "escolhas": [
+        {
+          "texto": "Renovar e seguir jogando",
+          "somar": {
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 3000,
+                "felicidade": 15
+              },
+              "resultado": "Você foi vendid{o} pra um time da Série B: mais {salario:3000}/mês!"
+            },
+            "fracasso": {
+              "definir": {
+                "renda": 1500
+              },
+              "somar": {
+                "saude": -20,
+                "felicidade": -15
+              },
+              "resultado": "Lesão séria. A carreira acabou cedo, e agora você ganha {salario:1500}/mês como auxiliar."
+            }
+          }
+        },
+        {
+          "texto": "Parar e virar professor de escolinha",
+          "definir": {
+            "renda": 2200
+          },
+          "somar": {
+            "felicidade": 5,
+            "saude": 5
+          },
+          "flags": [
+            "faculdade_noturna"
+          ],
+          "resultado": "Escolinha de futebol no bairro e faculdade de Educação Física à noite: {salario:2200}/mês."
+        }
+      ]
+    },
+    {
+      "id": "carro",
+      "idade": 25,
+      "grupo": "transporte25",
+      "cenario": "rua",
+      "titulo": "Carro novo?",
+      "texto": "Cansado de ônibus lotado, você passa na frente de uma concessionária. \"Entrada zero!\", diz a placa.",
+      "escolhas": [
+        {
+          "texto": "0km financiado em 60x",
+          "somar": {
+            "divida": 80000,
+            "custo": 500,
+            "felicidade": 12,
+            "estresse": 8
+          },
+          "resultado": "Carro zerado! Mas são R$ 80.000 de dívida a 15% ao ano, mais R$ 500/mês de seguro e gasolina.",
+          "flags": [
+            "tem_carro"
+          ]
+        },
+        {
+          "texto": "Usado, à vista",
+          "minimo": {
+            "liquidez": 25000
+          },
+          "somar": {
+            "dinheiro": -25000,
+            "custo": 400,
+            "felicidade": 6
+          },
+          "resultado": "Um carro usado e honesto por R$ 25.000. Sem dívida.",
+          "flags": [
+            "tem_carro"
+          ]
+        },
+        {
+          "texto": "Ônibus, bike e app",
+          "somar": {
+            "custo": 200
+          },
+          "resultado": "Nada de carro. Você gasta R$ 200/mês a mais com transporte e segue a vida."
+        }
+      ]
+    },
+    {
+      "id": "moto",
+      "idade": 25,
+      "grupo": "transporte25",
+      "cenario": "rua",
+      "titulo": "Uma moto?",
+      "texto": "Uma moto 160cc usada por R$ 12.000 resolveria sua vida no trânsito.",
+      "escolhas": [
+        {
+          "texto": "Financiar",
+          "somar": {
+            "divida": 15000,
+            "custo": 200,
+            "felicidade": 8,
+            "estresse": -5
+          },
+          "resultado": "Moto na garagem! R$ 15.000 de financiamento e R$ 200/mês de gasolina e seguro."
+        },
+        {
+          "texto": "Comprar à vista",
+          "minimo": {
+            "liquidez": 12000
+          },
+          "somar": {
+            "dinheiro": -12000,
+            "custo": 150,
+            "felicidade": 8
+          },
+          "resultado": "Paga e sua. Só R$ 150/mês de manutenção."
+        },
+        {
+          "texto": "Continuar de ônibus",
+          "somar": {
+            "custo": 150
+          },
+          "resultado": "Fone de ouvido e paciência."
+        }
+      ]
+    },
+    {
+      "id": "consorcio",
+      "idade": 25,
+      "grupo": "transporte25",
+      "cenario": "banco",
+      "titulo": "O consórcio",
+      "texto": "O gerente oferece um consórcio de imóvel: R$ 600 por mês e, \"logo logo\", você é contemplad{o}.",
+      "escolhas": [
+        {
+          "texto": "Entrar no consórcio",
+          "somar": {
+            "custo": 600
+          },
+          "sorte": {
+            "chance": 0.4,
+            "sucesso": {
+              "somar": {
+                "bens": 120000,
+                "felicidade": 10
+              },
+              "resultado": "Contemplad{o} no terceiro ano! A carta virou um apartamento pequeno: R$ 120 mil em bens."
+            },
+            "fracasso": {
+              "somar": {
+                "bens": 60000,
+                "felicidade": -3
+              },
+              "resultado": "Só foi contemplad{o} muitos anos depois, e a carta comprou menos: R$ 60 mil em bens."
+            }
+          }
+        },
+        {
+          "texto": "Investir os R$ 600 por conta",
+          "somar": {
+            "aporte": 0.05
+          },
+          "resultado": "Mais 5% da renda pros investimentos todo mês, sem taxa de administração."
+        },
+        {
+          "texto": "Agora não",
+          "resultado": "Talvez mais pra frente."
+        }
+      ]
+    },
+    {
+      "id": "diploma_noturno",
+      "idade": 26,
+      "cenario": "escola",
+      "titulo": "Formado, enfim!",
+      "texto": "Foram anos de noites mal dormidas, mas o diploma chegou.",
+      "requer": [
+        "faculdade_noturna"
+      ],
+      "escolhas": [
+        {
+          "texto": "Pegar o diploma!",
+          "somar": {
+            "renda": 1800,
+            "custo": -400,
+            "felicidade": 12
+          },
+          "flags": [
+            "faculdade"
+          ],
+          "removerFlags": [
+            "faculdade_noturna"
+          ],
+          "resultado": "Promoção! Mais {salario:1800}/mês e acabou a mensalidade."
+        }
+      ]
+    },
+    {
+      "id": "pet",
+      "idade": 26,
+      "grupo": "mimo26",
+      "cenario": "casa",
+      "titulo": "Visita inesperada",
+      "texto": "Um cachorrinho abandonado aparece na sua porta, todo molhado, abanando o rabo.",
+      "escolhas": [
+        {
+          "texto": "Adotar!",
+          "somar": {
+            "custo": 250,
+            "felicidade": 12,
+            "estresse": -10,
+            "saude": 3
+          },
+          "resultado": "Ração, vacina e veterinário: R$ 250/mês. Amor incondicional: não tem preço."
+        },
+        {
+          "texto": "Levar a um abrigo",
+          "somar": {
+            "felicidade": -2
+          },
+          "resultado": "Ele foi adotado por uma família legal. Você pensa nele às vezes."
+        }
+      ]
+    },
+    {
+      "id": "celular_top",
+      "idade": 26,
+      "grupo": "mimo26",
+      "cenario": "loja",
+      "titulo": "Lançamento",
+      "texto": "Lançou o celular novo: R$ 9.000 em 12x \"sem juros\". O seu ainda funciona...",
+      "escolhas": [
+        {
+          "texto": "Comprar o lançamento",
+          "somar": {
+            "divida": 9000,
+            "felicidade": 8
+          },
+          "resultado": "Câmera incrível! E R$ 9.000 a pagar."
+        },
+        {
+          "texto": "O modelo do ano passado",
+          "somar": {
+            "dinheiro": -3000,
+            "felicidade": 5
+          },
+          "resultado": "Quase igual, por um terço do preço."
+        },
+        {
+          "texto": "O meu ainda funciona",
+          "somar": {
+            "aporte": 0.02,
+            "felicidade": -1
+          },
+          "resultado": "Você investe a diferença: 2% a mais da renda."
+        }
+      ]
+    },
+    {
+      "id": "fotografia",
+      "idade": 26,
+      "grupo": "mimo26",
+      "cenario": "cidade",
+      "titulo": "Paixão por fotografia",
+      "texto": "Você se apaixonou por fotografia. Uma câmera boa custa R$ 8.000.",
+      "escolhas": [
+        {
+          "texto": "Comprar e fotografar eventos",
+          "somar": {
+            "dinheiro": -8000
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 800,
+                "felicidade": 10
+              },
+              "resultado": "Casamentos e aniversários nos fins de semana: mais {salario:800}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": 5
+              },
+              "resultado": "Virou um hobby caro. Mas feliz."
+            }
+          }
+        },
+        {
+          "texto": "Fotografar com o celular",
+          "somar": {
+            "felicidade": 4,
+            "estresse": -5
+          },
+          "resultado": "As melhores fotos são as que você tira."
+        }
+      ]
+    },
+    {
+      "id": "emergencia",
+      "idade": 27,
+      "chance": 0.6,
+      "cenario": "hospital",
+      "titulo": "Emergência",
+      "texto": "Seu pai precisa de uma cirurgia urgente e o plano não cobre. A conta é de R$ 15.000.",
+      "escolhas": [
+        {
+          "texto": "Pagar com a reserva",
+          "somar": {
+            "dinheiro": -15000,
+            "felicidade": 3
+          },
+          "resultado": "Ainda bem que tinha dinheiro guardado. Se não tinha, virou dívida..."
+        },
+        {
+          "texto": "Parcelar no cartão",
+          "somar": {
+            "divida": 20000,
+            "estresse": 10
+          },
+          "resultado": "Com juros do cartão, os R$ 15.000 viraram R$ 20.000 de dívida."
+        }
+      ]
+    },
+    {
+      "id": "salao",
+      "idade": 27,
+      "cenario": "loja",
+      "titulo": "Seu próprio salão",
+      "texto": "Você sempre arrasou nos cabelos das amigas. E se abrisse seu próprio salão de beleza?",
+      "requer": [
+        "mulher"
+      ],
+      "bloqueia": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Abrir um salão no bairro",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "corte",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -25000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.55,
+            "sucesso": {
+              "somar": {
+                "renda": 2800,
+                "felicidade": 15
+              },
+              "flags": [
+                "negocio_proprio"
+              ],
+              "resultado": "Agenda lotada! O salão rende mais {salario:2800}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "As clientes sumiram depois da inauguração. Fechou em um ano."
+            }
+          }
+        },
+        {
+          "texto": "Atender em casa",
+          "somar": {
+            "renda": 900,
+            "estresse": 8
+          },
+          "resultado": "Um cantinho da sala virou salão: mais {salario:900}/mês."
+        },
+        {
+          "texto": "Não é pra mim",
+          "resultado": "Fica o talento pras amigas."
+        }
+      ]
+    },
+    {
+      "id": "spa_luxo",
+      "idade": 27,
+      "cenario": "loja",
+      "titulo": "Spa de luxo",
+      "texto": "Uma sócia propõe abrir um spa e salão de luxo no bairro mais chique da cidade.",
+      "requer": [
+        "mulher",
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Investir R$ 250 mil",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "corte",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -250000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 9000,
+                "felicidade": 15
+              },
+              "flags": [
+                "negocio_proprio"
+              ],
+              "resultado": "Clientela VIP: mais {salario:9000}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "Aluguel caríssimo e pouca clientela. Fechou."
+            }
+          }
+        },
+        {
+          "texto": "Deixar pra lá",
+          "resultado": "Você prefere ser cliente."
+        }
+      ]
+    },
+    {
+      "id": "barbearia",
+      "idade": 27,
+      "cenario": "loja",
+      "titulo": "Sua própria barbearia",
+      "texto": "Seus cortes fazem sucesso entre os amigos. E se você abrisse uma barbearia?",
+      "requer": [
+        "homem"
+      ],
+      "bloqueia": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Abrir uma barbearia",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "corte",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -25000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.55,
+            "sucesso": {
+              "somar": {
+                "renda": 2800,
+                "felicidade": 15
+              },
+              "flags": [
+                "negocio_proprio"
+              ],
+              "resultado": "Cadeira sempre ocupada! Mais {salario:2800}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "A concorrência na mesma rua era pesada. Fechou em um ano."
+            }
+          }
+        },
+        {
+          "texto": "Cortar cabelo em casa",
+          "somar": {
+            "renda": 900,
+            "estresse": 8
+          },
+          "resultado": "Máquina na garagem: mais {salario:900}/mês."
+        },
+        {
+          "texto": "Não é pra mim",
+          "resultado": "Seu talento fica pros amigos."
+        }
+      ]
+    },
+    {
+      "id": "barbearia_premium",
+      "idade": 27,
+      "cenario": "loja",
+      "titulo": "Rede de barbearias",
+      "texto": "Um sócio propõe abrir uma rede de barbearias premium, com chope e videogame.",
+      "requer": [
+        "homem",
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Investir R$ 250 mil",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "corte",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -250000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 9000,
+                "felicidade": 15
+              },
+              "flags": [
+                "negocio_proprio"
+              ],
+              "resultado": "Virou moda! Mais {salario:9000}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10
+              },
+              "resultado": "A moda passou rápido. Fechou."
+            }
+          }
+        },
+        {
+          "texto": "Deixar pra lá",
+          "resultado": "Você prefere ser cliente."
+        }
+      ]
+    },
+    {
+      "id": "casamento",
+      "idade": 28,
+      "cenario": "festa",
+      "titulo": "Casamento",
+      "texto": "Você encontrou alguém especial e decidiram se casar!",
+      "escolhas": [
+        {
+          "texto": "Festão pra 300 pessoas",
+          "somar": {
+            "dinheiro": -50000,
+            "renda": 3000,
+            "custo": 1500,
+            "felicidade": 15,
+            "estresse": -5
+          },
+          "flags": [
+            "casado"
+          ],
+          "resultado": "Festa lendária de R$ 50.000! Agora o casal soma rendas, e gastos também."
+        },
+        {
+          "texto": "Cerimônia simples",
+          "somar": {
+            "dinheiro": -8000,
+            "renda": 3000,
+            "custo": 1500,
+            "felicidade": 15,
+            "estresse": -5
+          },
+          "flags": [
+            "casado"
+          ],
+          "resultado": "Só a família e os amigos próximos, por R$ 8.000. Perfeito do mesmo jeito."
+        },
+        {
+          "texto": "Melhor não casar agora",
+          "resultado": "Você prefere seguir solo por enquanto."
+        }
+      ]
+    },
+    {
+      "id": "nome_sujo_29",
+      "idade": 29,
+      "cenario": "banco",
+      "titulo": "Nome sujo",
+      "texto": "Seu nome foi parar na lista de devedores. A dívida já passou de R$ 30 mil e os juros não param de crescer.",
+      "minimo": {
+        "divida": 30000
+      },
+      "escolhas": [
+        {
+          "texto": "Renegociar no feirão",
+          "multiplicar": {
+            "divida": 0.5
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": -5
+          },
+          "resultado": "O banco topou um desconto de 50%. Ainda dói, mas agora dá pra respirar."
+        },
+        {
+          "texto": "Cortar gastos ao máximo",
+          "multiplicar": {
+            "custo": 0.6
+          },
+          "somar": {
+            "felicidade": -12,
+            "estresse": 10
+          },
+          "resultado": "Sem lazer, sem extras. Suas contas fixas caíram 40%, e o dinheiro que sobra vai todo pra dívida."
+        },
+        {
+          "texto": "Fingir que não é comigo",
+          "somar": {
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "As ligações de cobrança continuam. E os juros também."
+        }
+      ]
+    },
+    {
+      "id": "bet_copa",
+      "idade": 29,
+      "cenario": "cassino",
+      "titulo": "Final da Copa",
+      "texto": "Final da Copa do Mundo! O site de apostas oferece \"bônus de R$ 500 no primeiro depósito\".",
+      "escolhas": [
+        {
+          "texto": "Apostar R$ 200 no Brasil",
+          "cassino": true,
+          "somar": {
+            "dinheiro": -200,
+            "estresse": 5
+          },
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.45,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 400,
+                "felicidade": 10
+              },
+              "flags": [
+                "viciado_bet"
+              ],
+              "resultado": "É CAMPEÃO! Dobrou os R$ 200. E agora o app não para de te mandar notificação..."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Perdeu o jogo e os R$ 200."
+            }
+          }
+        },
+        {
+          "texto": "APOSTAR TUDO pra dobrar",
+          "cassino": true,
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.01,
+            "sucesso": {
+              "multiplicar": {
+                "dinheiro": 2,
+                "investimentos": 2
+              },
+              "somar": {
+                "felicidade": 30
+              },
+              "flags": [
+                "dobrou_tigrinho",
+                "viciado_bet"
+              ],
+              "resultado": "O TIGRINHO SOLTOU A CARTA! Você DOBROU tudo o que tinha! A chance era de 1%... não tente de novo."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "dinheiro": 0,
+                "investimentos": 0
+              },
+              "somar": {
+                "felicidade": -25,
+                "estresse": 30
+              },
+              "flags": [
+                "quebrou_tigrinho"
+              ],
+              "resultado": "Perdeu TUDO. Saldo e investimentos zerados em 30 segundos. A casa sempre ganha."
+            }
+          }
+        },
+        {
+          "texto": "Passar longe",
+          "somar": {
+            "felicidade": 2
+          },
+          "flags": [
+            "recusou_bet"
+          ],
+          "resultado": "Casa de aposta não é investimento: é entretenimento caro. E vicia."
+        }
+      ]
+    },
+    {
+      "id": "aportes",
+      "idade": 30,
+      "cenario": "banco",
+      "titulo": "A planilha do colega",
+      "texto": "Um colega mostra a planilha dele: investe uma parte do salário TODO mês, sem falta. \"Juros compostos, meu caro.\"",
+      "escolhas": [
+        {
+          "texto": "Investir 20% do salário",
+          "somar": {
+            "aporte": 0.2,
+            "felicidade": -3
+          },
+          "resultado": "Todo mês, 20% da renda vai direto pros investimentos. Dói agora, mas rende muito depois."
+        },
+        {
+          "texto": "Investir 10% do salário",
+          "somar": {
+            "aporte": 0.1
+          },
+          "resultado": "10% da renda vai pros investimentos todo mês. Um bom começo."
+        },
+        {
+          "texto": "Viver o agora",
+          "somar": {
+            "felicidade": 5
+          },
+          "resultado": "\"A gente só vive uma vez\", você pensa."
+        }
+      ]
+    },
+    {
+      "id": "ajuda_pais",
+      "idade": 30,
+      "cenario": "casa",
+      "titulo": "Ajuda dos pais",
+      "texto": "Seus pais juntaram um dinheirinho a vida toda e oferecem R$ 20.000 pra te ajudar.",
+      "requer": [
+        "medio"
+      ],
+      "escolhas": [
+        {
+          "texto": "Aceitar e investir",
+          "somar": {
+            "investimentos": 20000,
+            "felicidade": 5
+          },
+          "resultado": "R$ 20 mil rendendo. Seus pais ficaram orgulhosos."
+        },
+        {
+          "texto": "Recusar: é deles",
+          "somar": {
+            "felicidade": 8,
+            "estresse": -5
+          },
+          "resultado": "Você insistiu que eles guardassem pra aposentadoria. Que orgulho!"
+        }
+      ]
+    },
+    {
+      "id": "filhos",
+      "idade": 31,
+      "cenario": "casa",
+      "titulo": "Família crescendo?",
+      "texto": "Vocês conversam sobre ter um filho.",
+      "requer": [
+        "casado"
+      ],
+      "escolhas": [
+        {
+          "texto": "Ter um filho",
+          "somar": {
+            "custo": 1500,
+            "felicidade": 15,
+            "estresse": 10
+          },
+          "flags": [
+            "filho"
+          ],
+          "resultado": "Nasceu! Muito amor e R$ 1.500/mês a mais em fraldas, escola e médico."
+        },
+        {
+          "texto": "Esperar mais um pouco",
+          "resultado": "Vocês decidem esperar."
+        }
+      ]
+    },
+    {
+      "id": "casa_propria",
+      "idade": 32,
+      "cenario": "casa",
+      "titulo": "Casa própria",
+      "texto": "Uma casa de R$ 400.000 à venda no bairro que você gosta.",
+      "escolhas": [
+        {
+          "texto": "Financiar em 30 anos",
+          "minimo": {
+            "liquidez": 40000
+          },
+          "somar": {
+            "dinheiro": -40000,
+            "bens": 400000,
+            "custo": 1800,
+            "felicidade": 10,
+            "estresse": 5
+          },
+          "flags": [
+            "financiamento"
+          ],
+          "resultado": "Entrada de R$ 40.000 e parcelas de R$ 1.800/mês por 30 anos. A casa é sua!"
+        },
+        {
+          "texto": "Comprar à vista",
+          "minimo": {
+            "liquidez": 400000
+          },
+          "somar": {
+            "dinheiro": -400000,
+            "bens": 400000,
+            "felicidade": 15
+          },
+          "resultado": "Pagou tudo de uma vez. Nada de parcela!"
+        },
+        {
+          "texto": "Aluguel + investir a diferença",
+          "somar": {
+            "aporte": 0.05
+          },
+          "resultado": "Sem casa própria, mas 5% a mais da renda vai pros investimentos todo mês."
+        }
+      ]
+    },
+    {
+      "id": "heranca",
+      "idade": 33,
+      "chance": 0.3,
+      "cenario": "banco",
+      "titulo": "Herança",
+      "texto": "Uma tia distante deixou uma herança de R$ 80.000 para você!",
+      "escolhas": [
+        {
+          "texto": "Investir tudo",
+          "somar": {
+            "investimentos": 80000,
+            "felicidade": 5
+          },
+          "resultado": "R$ 80.000 trabalhando por você a juros compostos."
+        },
+        {
+          "texto": "Metade e metade",
+          "somar": {
+            "investimentos": 40000,
+            "felicidade": 12
+          },
+          "resultado": "Metade investida, metade em uma viagem dos sonhos."
+        },
+        {
+          "texto": "Viajar e trocar de carro",
+          "somar": {
+            "dinheiro": 15000,
+            "felicidade": 20,
+            "estresse": -15
+          },
+          "resultado": "Foram meses incríveis. Da herança, sobraram só R$ 15.000."
+        }
+      ]
+    },
+    {
+      "id": "negocio",
+      "idade": 34,
+      "grupo": "negocio34",
+      "cenario": "loja",
+      "titulo": "Ser seu próprio chefe",
+      "texto": "Uma franquia de açaí está à venda por R$ 80.000. \"Retorno garantido\", diz o vendedor.",
+      "escolhas": [
+        {
+          "texto": "Comprar a franquia",
+          "somar": {
+            "dinheiro": -80000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.45,
+            "sucesso": {
+              "somar": {
+                "renda": 6000,
+                "felicidade": 15
+              },
+              "resultado": "A loja bombou! Mais {salario:6000}/mês de lucro.",
+              "flags": [
+                "empreendedor"
+              ]
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -15
+              },
+              "resultado": "Movimento fraco, aluguel caro. Fechou em dois anos e o dinheiro sumiu."
+            }
+          }
+        },
+        {
+          "texto": "Negócio online pequeno",
+          "somar": {
+            "dinheiro": -5000
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "renda": 1500,
+                "felicidade": 5
+              },
+              "resultado": "A lojinha online engrenou: mais {salario:1500}/mês.",
+              "flags": [
+                "empreendedor"
+              ]
+            },
+            "fracasso": {
+              "resultado": "Vendeu pouco e você desistiu. Perdeu só R$ 5.000."
+            }
+          }
+        },
+        {
+          "texto": "Seguir no emprego",
+          "resultado": "Segurança em primeiro lugar."
+        }
+      ]
+    },
+    {
+      "id": "hamburgueria",
+      "idade": 34,
+      "grupo": "negocio34",
+      "cenario": "loja",
+      "titulo": "Hamburgueria artesanal",
+      "texto": "Um amigo quer abrir uma hamburgueria e te chama pra ser sóci{o} com R$ 50.000.",
+      "escolhas": [
+        {
+          "texto": "Entrar na sociedade",
+          "minigame": {
+            "tipo": "mira",
+            "tema": "churrasco",
+            "meta": 2
+          },
+          "somar": {
+            "dinheiro": -50000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.45,
+            "sucesso": {
+              "somar": {
+                "renda": 4000,
+                "felicidade": 12
+              },
+              "flags": [
+                "empreendedor"
+              ],
+              "resultado": "Fila na porta todo fim de semana: mais {salario:4000}/mês!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -12
+              },
+              "resultado": "Hambúrguer passado do ponto, brigas com o sócio e aluguel alto. Fecharam em dois anos."
+            }
+          }
+        },
+        {
+          "texto": "Só emprestar o dinheiro",
+          "somar": {
+            "dinheiro": -50000
+          },
+          "sorte": {
+            "chance": 0.35,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 60000
+              },
+              "resultado": "A hamburgueria deu certo e ele devolveu R$ 60 mil!"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -8
+              },
+              "resultado": "O negócio quebrou e o dinheiro não voltou."
+            }
+          }
+        },
+        {
+          "texto": "Desejar boa sorte",
+          "resultado": "Amizade e dinheiro separados."
+        }
+      ]
+    },
+    {
+      "id": "canal",
+      "idade": 34,
+      "grupo": "negocio34",
+      "cenario": "casa",
+      "titulo": "Criar um canal?",
+      "texto": "Seus vídeos curtos fazem sucesso entre os amigos. Equipamento profissional: R$ 6.000.",
+      "escolhas": [
+        {
+          "texto": "Criar o canal",
+          "somar": {
+            "dinheiro": -6000,
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "somar": {
+                "renda": 3000,
+                "felicidade": 15
+              },
+              "flags": [
+                "empreendedor"
+              ],
+              "resultado": "Viralizou! Publis e monetização: mais {salario:3000}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "300 inscritos, a maioria da família."
+            }
+          }
+        },
+        {
+          "texto": "Deixar quieto",
+          "resultado": "Os vídeos continuam no grupo da família."
+        }
+      ]
+    },
+    {
+      "id": "reforma",
+      "idade": 35,
+      "cenario": "casa",
+      "titulo": "Casa pedindo socorro",
+      "texto": "Infiltração, piso soltando, cozinha velha... sua casa precisa de uma reforma.",
+      "minimo": {
+        "bens": 1
+      },
+      "escolhas": [
+        {
+          "texto": "Reforma completa",
+          "somar": {
+            "dinheiro": -60000,
+            "bens": 80000,
+            "felicidade": 10
+          },
+          "resultado": "Casa nova! Custou R$ 60.000, mas o imóvel passou a valer R$ 80.000 a mais."
+        },
+        {
+          "texto": "Só o essencial",
+          "somar": {
+            "dinheiro": -10000,
+            "bens": 10000,
+            "felicidade": 3
+          },
+          "resultado": "Consertou o que era urgente."
+        },
+        {
+          "texto": "Deixar como está",
+          "somar": {
+            "felicidade": -4
+          },
+          "resultado": "A goteira na sala virou parte da decoração."
+        }
+      ]
+    },
+    {
+      "id": "lancha",
+      "idade": 35,
+      "cenario": "praia",
+      "titulo": "Vida de herdeiro",
+      "texto": "Um amigo do clube está vendendo uma lancha por R$ 400.000. \"Tá barato, é negócio!\"",
+      "requer": [
+        "facil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Comprar a lancha",
+          "somar": {
+            "dinheiro": -400000,
+            "bens": 250000,
+            "custo": 4000,
+            "felicidade": 15,
+            "estresse": -5
+          },
+          "resultado": "Marinheiro, combustível, marina: R$ 4.000/mês. E ela já vale bem menos do que você pagou..."
+        },
+        {
+          "texto": "Doar R$ 100 mil a uma ONG",
+          "somar": {
+            "dinheiro": -100000,
+            "felicidade": 20,
+            "estresse": -10
+          },
+          "flags": [
+            "filantropo"
+          ],
+          "resultado": "Você ajudou a construir uma escola na periferia. Isso ninguém tira de você."
+        },
+        {
+          "texto": "Deixar o dinheiro rendendo",
+          "resultado": "Rico de verdade sabe a hora de não gastar."
+        }
+      ]
+    },
+    {
+      "id": "demissao",
+      "idade": 36,
+      "chance": 0.5,
+      "cenario": "escritorio",
+      "titulo": "Demitido!",
+      "texto": "A empresa fez cortes e seu nome estava na lista.",
+      "bloqueia": [
+        "concursado"
+      ],
+      "escolhas": [
+        {
+          "texto": "Pegar o primeiro emprego",
+          "multiplicar": {
+            "renda": 0.8
+          },
+          "somar": {
+            "felicidade": -8,
+            "estresse": 15
+          },
+          "resultado": "Você voltou rápido, mas ganhando 20% menos."
+        },
+        {
+          "texto": "Esperar uma vaga boa",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "entrevista",
+            "meta": 3
+          },
+          "somar": {
+            "dinheiro": -30000,
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "multiplicar": {
+                "renda": 1.15
+              },
+              "resultado": "Meses vivendo da reserva, mas valeu: salário 15% maior!"
+            },
+            "fracasso": {
+              "multiplicar": {
+                "renda": 0.85
+              },
+              "resultado": "A reserva acabou e você aceitou uma vaga pior."
+            }
+          }
+        },
+        {
+          "texto": "Virar autônomo",
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "multiplicar": {
+                "renda": 1.3
+              },
+              "somar": {
+                "felicidade": 10
+              },
+              "resultado": "Clientes não faltam! Renda 30% maior."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "renda": 0.7
+              },
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Os clientes demoraram a aparecer. Renda 30% menor."
+            }
+          },
+          "somar": {
+            "estresse": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "loteria",
+      "idade": 37,
+      "grupo": "tentacao37",
+      "cenario": "loja",
+      "titulo": "Mega acumulada",
+      "texto": "A loteria está acumulada em R$ 100 milhões! Seus colegas de trabalho estão organizando um bolão.",
+      "escolhas": [
+        {
+          "texto": "Jogar toda semana",
+          "somar": {
+            "custo": 250
+          },
+          "sorte": {
+            "chance": 0.005,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 5000000,
+                "custo": -250,
+                "felicidade": 30
+              },
+              "resultado": "VOCÊ GANHOU! R$ 5 milhões! (A chance era quase zero.)",
+              "flags": [
+                "ganhou_loteria"
+              ]
+            },
+            "fracasso": {
+              "resultado": "Nada. Mas agora a aposta virou hábito: R$ 250/mês, pra sempre."
+            }
+          }
+        },
+        {
+          "texto": "Entrar só no bolão",
+          "somar": {
+            "dinheiro": -50
+          },
+          "sorte": {
+            "chance": 0.02,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 300000,
+                "felicidade": 20
+              },
+              "resultado": "O bolão acertou a quina! Sua parte: R$ 300.000!",
+              "flags": [
+                "ganhou_loteria"
+              ]
+            },
+            "fracasso": {
+              "resultado": "Não deu nada. Foram só R$ 50."
+            }
+          }
+        },
+        {
+          "texto": "Não jogar",
+          "resultado": "A chance de ganhar é de 1 em 50 milhões. Você prefere investir."
+        }
+      ]
+    },
+    {
+      "id": "suv",
+      "idade": 37,
+      "grupo": "tentacao37",
+      "cenario": "rua",
+      "titulo": "Carro de gente importante",
+      "texto": "O vendedor da concessionária liga: \"Um SUV zero combina com você!\" R$ 140 mil.",
+      "escolhas": [
+        {
+          "texto": "Financiar o SUV",
+          "somar": {
+            "divida": 140000,
+            "custo": 800,
+            "felicidade": 12,
+            "estresse": 8
+          },
+          "flags": [
+            "tem_carro"
+          ],
+          "resultado": "Os vizinhos repararam. O banco também: R$ 140 mil de dívida e R$ 800/mês de custos."
+        },
+        {
+          "texto": "Seminovo à vista",
+          "minimo": {
+            "liquidez": 60000
+          },
+          "somar": {
+            "dinheiro": -60000,
+            "custo": 400,
+            "felicidade": 6
+          },
+          "flags": [
+            "tem_carro"
+          ],
+          "resultado": "Um seminovo ótimo por R$ 60 mil, sem dívida."
+        },
+        {
+          "texto": "O carro atual dá conta",
+          "somar": {
+            "aporte": 0.03,
+            "felicidade": -2
+          },
+          "resultado": "Você investe 3% a mais da renda."
+        }
+      ]
+    },
+    {
+      "id": "padrao_de_vida",
+      "idade": 38,
+      "grupo": "vizinho38",
+      "cenario": "cidade",
+      "titulo": "Vizinho rico",
+      "texto": "Seus colegas trocaram de carro, de casa, foram pra Europa... e você?",
+      "escolhas": [
+        {
+          "texto": "Subir o padrão de vida",
+          "somar": {
+            "custo": 3000,
+            "felicidade": 10,
+            "estresse": 5
+          },
+          "resultado": "Restaurantes, viagens, carro novo. Mais R$ 3.000/mês de gastos fixos."
+        },
+        {
+          "texto": "Manter o padrão",
+          "somar": {
+            "aporte": 0.05,
+            "felicidade": -2
+          },
+          "resultado": "Você mantém o estilo de vida e investe 5% a mais da renda."
+        }
+      ]
+    },
+    {
+      "id": "disney",
+      "idade": 38,
+      "grupo": "vizinho38",
+      "cenario": "aeroporto",
+      "titulo": "Todo mundo foi pra Disney",
+      "texto": "No trabalho, todo mundo já fez a viagem pra Disney. Pra você e a família, sai R$ 40.000.",
+      "escolhas": [
+        {
+          "texto": "Ir parcelado em 10x",
+          "somar": {
+            "divida": 40000,
+            "felicidade": 15,
+            "estresse": -5
+          },
+          "resultado": "Fotos com o castelo! E R$ 40 mil no cartão."
+        },
+        {
+          "texto": "Ir à vista",
+          "minimo": {
+            "liquidez": 40000
+          },
+          "somar": {
+            "dinheiro": -40000,
+            "felicidade": 15,
+            "estresse": -8
+          },
+          "resultado": "Viagem paga antes de embarcar. Nada de fatura assombrando."
+        },
+        {
+          "texto": "Praia no Brasil",
+          "somar": {
+            "dinheiro": -8000,
+            "felicidade": 8,
+            "estresse": -8
+          },
+          "resultado": "Nordeste, água quente e R$ 8 mil."
+        }
+      ]
+    },
+    {
+      "id": "nome_sujo_39",
+      "idade": 39,
+      "cenario": "banco",
+      "titulo": "Nome sujo",
+      "texto": "Seu nome foi parar na lista de devedores. A dívida já passou de R$ 30 mil e os juros não param de crescer.",
+      "minimo": {
+        "divida": 30000
+      },
+      "escolhas": [
+        {
+          "texto": "Renegociar no feirão",
+          "multiplicar": {
+            "divida": 0.5
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": -5
+          },
+          "resultado": "O banco topou um desconto de 50%. Ainda dói, mas agora dá pra respirar."
+        },
+        {
+          "texto": "Cortar gastos ao máximo",
+          "multiplicar": {
+            "custo": 0.6
+          },
+          "somar": {
+            "felicidade": -12,
+            "estresse": 10
+          },
+          "resultado": "Sem lazer, sem extras. Suas contas fixas caíram 40%, e o dinheiro que sobra vai todo pra dívida."
+        },
+        {
+          "texto": "Fingir que não é comigo",
+          "somar": {
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "As ligações de cobrança continuam. E os juros também."
+        }
+      ]
+    },
+    {
+      "id": "cripto",
+      "idade": 40,
+      "grupo": "invest40",
+      "cenario": "banco",
+      "titulo": "Febre da moeda digital",
+      "texto": "Todo mundo fala de uma moeda digital que \"só sobe\". Seu cunhado ficou rico (ele diz).",
+      "escolhas": [
+        {
+          "texto": "Metade dos investimentos",
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "multiplicar": {
+                "investimentos": 2.5
+              },
+              "somar": {
+                "felicidade": 15
+              },
+              "resultado": "A moeda foi pra lua! Seus investimentos multiplicaram 2,5x."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.6
+              },
+              "somar": {
+                "felicidade": -15,
+                "estresse": 15
+              },
+              "resultado": "A moeda despencou 80%. Você perdeu 40% de tudo que tinha investido."
+            }
+          }
+        },
+        {
+          "texto": "Só uma pontinha (5%)",
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "multiplicar": {
+                "investimentos": 1.15
+              },
+              "resultado": "Subiu bem! Seus investimentos cresceram 15%."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.97
+              },
+              "resultado": "Caiu, mas como era pouco, quase não doeu."
+            }
+          }
+        },
+        {
+          "texto": "Ficar no diversificado",
+          "resultado": "Sem emoção, sem susto."
+        }
+      ]
+    },
+    {
+      "id": "posto_saude",
+      "idade": 40,
+      "cenario": "hospital",
+      "titulo": "Agente de saúde",
+      "texto": "A agente de saúde do posto bate na sua porta oferecendo exames de rotina gratuitos.",
+      "requer": [
+        "dificil"
+      ],
+      "escolhas": [
+        {
+          "texto": "Fazer os exames",
+          "somar": {
+            "saude": 12,
+            "estresse": -3
+          },
+          "flags": [
+            "saudavel"
+          ],
+          "resultado": "Descobriram uma pressão alta no começo. Remedinho do posto e acompanhamento: salvou sua saúde!"
+        },
+        {
+          "texto": "Não tenho tempo",
+          "somar": {
+            "saude": -5
+          },
+          "resultado": "\"Depois eu vejo isso.\""
+        }
+      ]
+    },
+    {
+      "id": "dividendos",
+      "idade": 40,
+      "grupo": "invest40",
+      "cenario": "banco",
+      "titulo": "Renda passiva",
+      "texto": "Um colega mostra a carteira de ações que pagam dividendos todo mês. \"Renda passiva de verdade!\"",
+      "escolhas": [
+        {
+          "texto": "Montar uma carteira de dividendos",
+          "investirPct": 0.5,
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "multiplicar": {
+                "investimentos": 1.2
+              },
+              "somar": {
+                "felicidade": 5
+              },
+              "resultado": "Em cinco anos, as ações valorizaram e pagaram dividendos: +20% nos investimentos."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.9
+              },
+              "resultado": "Uma crise derrubou a bolsa: -10%. No longo prazo, costuma voltar."
+            }
+          }
+        },
+        {
+          "texto": "Fundos imobiliários",
+          "somar": {
+            "aporte": 0.03
+          },
+          "resultado": "Mais 3% da renda vai pra fundos que pagam aluguel todo mês."
+        },
+        {
+          "texto": "Deixar como está",
+          "resultado": "Seu dinheiro segue no conservador."
+        }
+      ]
+    },
+    {
+      "id": "previdencia",
+      "idade": 40,
+      "grupo": "invest40",
+      "cenario": "banco",
+      "titulo": "Previdência do banco",
+      "texto": "O gerente oferece uma previdência privada \"imperdível\", com taxa de administração de 2,5% ao ano.",
+      "escolhas": [
+        {
+          "texto": "Assinar o plano do banco",
+          "somar": {
+            "aporte": 0.05
+          },
+          "multiplicar": {
+            "investimentos": 0.95
+          },
+          "resultado": "Você vai poupar mais, mas a taxa alta come uma parte do rendimento."
+        },
+        {
+          "texto": "Procurar um plano barato",
+          "somar": {
+            "aporte": 0.05,
+            "felicidade": 3
+          },
+          "resultado": "Achou um plano com taxa de 0,5%. Muito melhor."
+        },
+        {
+          "texto": "Não, obrigad{o}",
+          "resultado": "O gerente vai tentar de novo ano que vem."
+        }
+      ]
+    },
+    {
+      "id": "crise_meia_idade",
+      "idade": 41,
+      "grupo": "crise41",
+      "cenario": "rua",
+      "titulo": "Crise dos 40",
+      "texto": "Você se olha no espelho e pensa: \"a vida está passando...\"",
+      "escolhas": [
+        {
+          "texto": "Comprar uma moto esportiva",
+          "somar": {
+            "dinheiro": -60000,
+            "custo": 300,
+            "felicidade": 12,
+            "estresse": -5
+          },
+          "resultado": "Vruuum! R$ 60.000 e mais R$ 300/mês de seguro."
+        },
+        {
+          "texto": "Academia e terapia",
+          "somar": {
+            "custo": 500,
+            "felicidade": 10,
+            "saude": 15,
+            "estresse": -15
+          },
+          "resultado": "R$ 500/mês investidos em você mesmo. Mente e corpo agradecem.",
+          "flags": [
+            "ativo"
+          ]
+        },
+        {
+          "texto": "Aprender um instrumento",
+          "somar": {
+            "dinheiro": -2000,
+            "felicidade": 6,
+            "estresse": -10
+          },
+          "resultado": "Um violão usado e vídeos na internet. Barato e divertido."
+        }
+      ]
+    },
+    {
+      "id": "voltar_estudar",
+      "idade": 41,
+      "grupo": "crise41",
+      "cenario": "escola",
+      "titulo": "De volta pra sala de aula",
+      "texto": "Aos 41, você pensa em fazer uma faculdade nova, à noite. Nunca é tarde?",
+      "escolhas": [
+        {
+          "texto": "Matricular-se",
+          "somar": {
+            "dinheiro": -20000,
+            "estresse": 15
+          },
+          "sorte": {
+            "chance": 0.7,
+            "sucesso": {
+              "somar": {
+                "renda": 1500,
+                "felicidade": 12
+              },
+              "resultado": "Diploma aos 45! Promoção e mais {salario:1500}/mês."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Trabalho, casa e faculdade: você trancou no segundo ano."
+            }
+          }
+        },
+        {
+          "texto": "Curso livre online",
+          "somar": {
+            "dinheiro": -1000,
+            "renda": 300
+          },
+          "resultado": "Aprendeu algo novo e ganhou {salario:300}/mês a mais."
+        },
+        {
+          "texto": "Não, a vida é agora",
+          "somar": {
+            "felicidade": 3,
+            "estresse": -5
+          },
+          "resultado": "Tempo livre também vale ouro."
+        }
+      ]
+    },
+    {
+      "id": "enchente",
+      "idade": 42,
+      "chance": 0.3,
+      "cenario": "casa",
+      "titulo": "Enchente!",
+      "texto": "Uma chuva forte alagou sua casa e estragou móveis e eletrodomésticos.",
+      "escolhas": [
+        {
+          "texto": "Comprar tudo novo",
+          "somar": {
+            "dinheiro": -25000
+          },
+          "resultado": "Tudo novinho por R$ 25.000. Uma reserva de emergência faz falta nessas horas."
+        },
+        {
+          "texto": "Consertar o que der",
+          "somar": {
+            "dinheiro": -8000,
+            "felicidade": -8
+          },
+          "resultado": "Com R$ 8.000 e muita paciência, a casa voltou a funcionar."
+        }
+      ]
+    },
+    {
+      "id": "parente",
+      "idade": 43,
+      "grupo": "familia43",
+      "cenario": "casa",
+      "titulo": "Empréstimo de família",
+      "texto": "Seu primo pede R$ 30.000 emprestado. Jura que devolve em um ano.",
+      "escolhas": [
+        {
+          "texto": "Emprestar",
+          "somar": {
+            "dinheiro": -30000,
+            "felicidade": 5
+          },
+          "sorte": {
+            "chance": 0.4,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 30000
+              },
+              "resultado": "Ele devolveu tudo, certinho! Milagres acontecem."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10,
+                "estresse": 5
+              },
+              "resultado": "O primo sumiu. O dinheiro também."
+            }
+          }
+        },
+        {
+          "texto": "Recusar com jeitinho",
+          "somar": {
+            "felicidade": -5
+          },
+          "resultado": "O almoço de domingo ficou um pouco constrangedor."
+        }
+      ]
+    },
+    {
+      "id": "fiador",
+      "idade": 43,
+      "grupo": "familia43",
+      "cenario": "casa",
+      "titulo": "Seja meu fiador",
+      "texto": "Seu melhor amigo vai alugar um apartamento e pede pra você ser fiador{a}.",
+      "escolhas": [
+        {
+          "texto": "Assinar como fiador",
+          "somar": {
+            "felicidade": 5
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "resultado": "Ele pagou o aluguel direitinho todos os anos."
+            },
+            "fracasso": {
+              "somar": {
+                "divida": 25000,
+                "felicidade": -10,
+                "estresse": 15
+              },
+              "resultado": "Ele perdeu o emprego e parou de pagar. A dívida de R$ 25 mil caiu no seu nome."
+            }
+          }
+        },
+        {
+          "texto": "Explicar que não pode",
+          "somar": {
+            "felicidade": -3
+          },
+          "resultado": "Ele entendeu. Mais ou menos."
+        }
+      ]
+    },
+    {
+      "id": "crise_casamento",
+      "idade": 44,
+      "chance": 0.35,
+      "cenario": "casa",
+      "titulo": "Crise no casamento",
+      "texto": "As brigas estão cada vez mais frequentes. O casamento está por um fio.",
+      "requer": [
+        "casado"
+      ],
+      "escolhas": [
+        {
+          "texto": "Terapia de casal",
+          "somar": {
+            "dinheiro": -6000,
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.65,
+            "sucesso": {
+              "somar": {
+                "felicidade": 10
+              },
+              "resultado": "Vocês se reencontraram. O casamento ficou mais forte."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "investimentos": 0.5,
+                "bens": 0.5
+              },
+              "somar": {
+                "renda": -3000,
+                "custo": -1000,
+                "felicidade": -15
+              },
+              "removerFlags": [
+                "casado"
+              ],
+              "resultado": "Não teve jeito: divórcio. Os bens e investimentos foram divididos."
+            }
+          }
+        },
+        {
+          "texto": "Pedir o divórcio",
+          "multiplicar": {
+            "investimentos": 0.5,
+            "bens": 0.5
+          },
+          "somar": {
+            "dinheiro": -15000,
+            "renda": -3000,
+            "custo": -1000,
+            "felicidade": -10,
+            "estresse": 15
+          },
+          "removerFlags": [
+            "casado"
+          ],
+          "resultado": "Advogados, partilha de bens e uma vida nova pela frente."
+        },
+        {
+          "texto": "Fingir que está tudo bem",
+          "somar": {
+            "felicidade": -10,
+            "estresse": 20
+          },
+          "resultado": "O clima em casa continua pesado."
+        }
+      ]
+    },
+    {
+      "id": "mba",
+      "idade": 45,
+      "grupo": "carreira45",
+      "cenario": "escritorio",
+      "titulo": "Subir na carreira",
+      "texto": "Uma vaga de gerente vai abrir. Dizem que quem tem especialização sai na frente.",
+      "escolhas": [
+        {
+          "texto": "MBA caro (R$ 60 mil)",
+          "requer": [
+            "faculdade"
+          ],
+          "somar": {
+            "dinheiro": -60000,
+            "renda": 4000,
+            "felicidade": -3,
+            "estresse": 15
+          },
+          "resultado": "Puxado, mas virou gerente: mais {salario:4000}/mês."
+        },
+        {
+          "texto": "Curso online barato",
+          "somar": {
+            "dinheiro": -3000,
+            "renda": 800
+          },
+          "resultado": "Aprendeu coisas úteis e ganhou um aumento de {salario:800}/mês."
+        },
+        {
+          "texto": "Já está bom assim",
+          "somar": {
+            "felicidade": 5,
+            "estresse": -10
+          },
+          "resultado": "Você prefere tempo livre a cargo novo."
+        }
+      ]
+    },
+    {
+      "id": "outra_cidade",
+      "idade": 45,
+      "grupo": "carreira45",
+      "cenario": "escritorio",
+      "titulo": "Proposta tentadora",
+      "texto": "Uma empresa de outra cidade oferece um cargo com salário 40% maior. Mas é preciso se mudar.",
+      "escolhas": [
+        {
+          "texto": "Aceitar e se mudar",
+          "multiplicar": {
+            "renda": 1.4
+          },
+          "somar": {
+            "dinheiro": -15000,
+            "felicidade": -5,
+            "estresse": 10
+          },
+          "resultado": "Mudança de R$ 15 mil, cidade nova, salário 40% maior."
+        },
+        {
+          "texto": "Pedir contraproposta",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "entrevista",
+            "meta": 3
+          },
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "multiplicar": {
+                "renda": 1.15
+              },
+              "somar": {
+                "felicidade": 5
+              },
+              "resultado": "Seu chefe cobriu parte da proposta: salário 15% maior, sem mudança."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -3
+              },
+              "resultado": "\"Não tem verba\", disse o chefe. E agora ele sabe que você queria sair."
+            }
+          }
+        },
+        {
+          "texto": "Ficar onde está",
+          "somar": {
+            "estresse": -5
+          },
+          "resultado": "Raízes também valem."
+        }
+      ]
+    },
+    {
+      "id": "bet_colega",
+      "idade": 46,
+      "cenario": "cassino",
+      "titulo": "Horário pagante",
+      "texto": "Seu colega de trabalho jura que descobriu o \"horário pagante\" do Tigrinho: \"É só jogar às 3 da manhã!\"",
+      "escolhas": [
+        {
+          "texto": "Jogar R$ 500 de madrugada",
+          "cassino": true,
+          "somar": {
+            "dinheiro": -500,
+            "saude": -3,
+            "estresse": 5
+          },
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.25,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 1000
+              },
+              "flags": [
+                "viciado_bet"
+              ],
+              "resultado": "Pagou! Você ganhou R$ 1.000... e ficou acordado até as 6 querendo mais."
+            },
+            "fracasso": {
+              "resultado": "Não existe horário pagante. Perdeu R$ 500 e uma noite de sono."
+            }
+          }
+        },
+        {
+          "texto": "APOSTAR TUDO pra dobrar",
+          "cassino": true,
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.01,
+            "sucesso": {
+              "multiplicar": {
+                "dinheiro": 2,
+                "investimentos": 2
+              },
+              "somar": {
+                "felicidade": 30
+              },
+              "flags": [
+                "dobrou_tigrinho",
+                "viciado_bet"
+              ],
+              "resultado": "O TIGRINHO SOLTOU A CARTA! Você DOBROU tudo o que tinha! A chance era de 1%... não tente de novo."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "dinheiro": 0,
+                "investimentos": 0
+              },
+              "somar": {
+                "felicidade": -25,
+                "estresse": 30
+              },
+              "flags": [
+                "quebrou_tigrinho"
+              ],
+              "resultado": "Perdeu TUDO. Saldo e investimentos zerados em 30 segundos. A casa sempre ganha."
+            }
+          }
+        },
+        {
+          "texto": "Passar longe",
+          "somar": {
+            "felicidade": 2
+          },
+          "flags": [
+            "recusou_bet"
+          ],
+          "resultado": "Casa de aposta não é investimento: é entretenimento caro. E vicia."
+        }
+      ]
+    },
+    {
+      "id": "pais_idosos",
+      "idade": 47,
+      "cenario": "hospital",
+      "titulo": "Seus pais envelheceram",
+      "texto": "Seus pais estão com a saúde frágil e precisam de ajuda no dia a dia.",
+      "escolhas": [
+        {
+          "texto": "Pagar um cuidador",
+          "somar": {
+            "dinheiro": -60000,
+            "felicidade": 5,
+            "estresse": 5
+          },
+          "resultado": "Um cuidador profissional por alguns anos: R$ 60.000. Eles estão em boas mãos."
+        },
+        {
+          "texto": "Trazer pra morar comigo",
+          "somar": {
+            "dinheiro": -15000,
+            "custo": 400,
+            "felicidade": -3,
+            "estresse": 15
+          },
+          "resultado": "Uma pequena reforma e a casa ficou cheia. Cansativo, mas cheio de amor."
+        },
+        {
+          "texto": "Dividir com os irmãos",
+          "somar": {
+            "dinheiro": -20000,
+            "felicidade": 3,
+            "estresse": 5
+          },
+          "resultado": "Cada um ajudou com o que podia. Sua parte: R$ 20.000."
+        }
+      ]
+    },
+    {
+      "id": "faculdade_filho",
+      "idade": 48,
+      "cenario": "escola",
+      "titulo": "Vestibular do filho",
+      "texto": "Seu filho vai entrar na faculdade. Particular ou pública?",
+      "requer": [
+        "filho"
+      ],
+      "escolhas": [
+        {
+          "texto": "Pagar particular",
+          "somar": {
+            "custo": 2500,
+            "felicidade": 5
+          },
+          "flags": [
+            "filho_particular"
+          ],
+          "resultado": "Mensalidade de R$ 2.500 pelos próximos anos."
+        },
+        {
+          "texto": "Incentivar a pública",
+          "somar": {
+            "felicidade": 3
+          },
+          "resultado": "Ele estudou muito e passou na pública. Orgulho!"
+        }
+      ]
+    },
+    {
+      "id": "nome_sujo_49",
+      "idade": 49,
+      "cenario": "banco",
+      "titulo": "Nome sujo",
+      "texto": "Seu nome foi parar na lista de devedores. A dívida já passou de R$ 30 mil e os juros não param de crescer.",
+      "minimo": {
+        "divida": 30000
+      },
+      "escolhas": [
+        {
+          "texto": "Renegociar no feirão",
+          "multiplicar": {
+            "divida": 0.5
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": -5
+          },
+          "resultado": "O banco topou um desconto de 50%. Ainda dói, mas agora dá pra respirar."
+        },
+        {
+          "texto": "Cortar gastos ao máximo",
+          "multiplicar": {
+            "custo": 0.6
+          },
+          "somar": {
+            "felicidade": -12,
+            "estresse": 10
+          },
+          "resultado": "Sem lazer, sem extras. Suas contas fixas caíram 40%, e o dinheiro que sobra vai todo pra dívida."
+        },
+        {
+          "texto": "Fingir que não é comigo",
+          "somar": {
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "As ligações de cobrança continuam. E os juros também."
+        }
+      ]
+    },
+    {
+      "id": "saude",
+      "idade": 50,
+      "cenario": "hospital",
+      "titulo": "Check-up dos 50",
+      "texto": "O médico olha seus exames e franze a testa. \"Precisamos conversar sobre seus hábitos.\"",
+      "escolhas": [
+        {
+          "texto": "Plano de saúde + academia",
+          "somar": {
+            "custo": 900,
+            "felicidade": 5,
+            "saude": 20,
+            "estresse": -10
+          },
+          "flags": [
+            "saudavel"
+          ],
+          "resultado": "R$ 900/mês a mais, mas você nunca se sentiu tão bem."
+        },
+        {
+          "texto": "Deixar pra depois",
+          "resultado": "\"Ano que vem eu começo\", você diz. De novo.",
+          "somar": {
+            "saude": -5
+          }
+        }
+      ]
+    },
+    {
+      "id": "filho_independente",
+      "idade": 50,
+      "cenario": "casa",
+      "titulo": "Filho independente",
+      "texto": "Seu filho arrumou o primeiro emprego e já paga as próprias contas.",
+      "requer": [
+        "filho"
+      ],
+      "escolhas": [
+        {
+          "texto": "Que orgulho!",
+          "somar": {
+            "custo": -1500,
+            "felicidade": 8
+          },
+          "resultado": "Seus gastos caíram R$ 1.500/mês."
+        }
+      ]
+    },
+    {
+      "id": "consultoria",
+      "idade": 52,
+      "grupo": "extra52",
+      "cenario": "escritorio",
+      "titulo": "Experiência vale ouro",
+      "texto": "Uma empresa quer pagar pela sua experiência como consultor nas horas vagas.",
+      "escolhas": [
+        {
+          "texto": "Topar a consultoria",
+          "minigame": {
+            "tipo": "quiz",
+            "tema": "financas",
+            "meta": 3
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "somar": {
+                "renda": 2500
+              },
+              "resultado": "Os clientes adoraram: mais {salario:2500}/mês."
+            },
+            "fracasso": {
+              "resultado": "O projeto foi cancelado depois de alguns meses."
+            }
+          }
+        },
+        {
+          "texto": "Descansar mais",
+          "somar": {
+            "felicidade": 8,
+            "estresse": -15
+          },
+          "resultado": "Fins de semana livres de verdade."
+        }
+      ]
+    },
+    {
+      "id": "airbnb",
+      "idade": 52,
+      "grupo": "extra52",
+      "cenario": "casa",
+      "titulo": "Quarto vago",
+      "texto": "Sobrou um quarto em casa. Dá pra alugar por temporada num aplicativo.",
+      "escolhas": [
+        {
+          "texto": "Anunciar o quarto",
+          "somar": {
+            "renda": 1200,
+            "estresse": 8
+          },
+          "resultado": "Hóspedes do mundo todo e mais {salario:1200}/mês."
+        },
+        {
+          "texto": "Transformar em ateliê",
+          "somar": {
+            "felicidade": 6,
+            "estresse": -8
+          },
+          "resultado": "Seu cantinho de hobbies. Paz."
+        }
+      ]
+    },
+    {
+      "id": "filho_formado",
+      "idade": 53,
+      "cenario": "escola",
+      "titulo": "Filho formado",
+      "texto": "A última mensalidade da faculdade foi paga!",
+      "requer": [
+        "filho_particular"
+      ],
+      "escolhas": [
+        {
+          "texto": "Missão cumprida",
+          "somar": {
+            "custo": -2500,
+            "felicidade": 10
+          },
+          "removerFlags": [
+            "filho_particular"
+          ],
+          "resultado": "Menos R$ 2.500/mês de gastos."
+        }
+      ]
+    },
+    {
+      "id": "neto",
+      "idade": 54,
+      "cenario": "casa",
+      "titulo": "Vem aí um neto!",
+      "texto": "Seu filho conta a novidade: você vai ser avó ou avô!",
+      "requer": [
+        "filho"
+      ],
+      "escolhas": [
+        {
+          "texto": "Ajudar com tudo",
+          "somar": {
+            "custo": 600,
+            "felicidade": 15,
+            "estresse": 5
+          },
+          "resultado": "Fraldas, brinquedos e muito colo: R$ 600/mês e o coração cheio.",
+          "flags": [
+            "avo"
+          ]
+        },
+        {
+          "texto": "Visitar nos fins de semana",
+          "somar": {
+            "felicidade": 8
+          },
+          "resultado": "Domingo é dia de neto.",
+          "flags": [
+            "avo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problema_saude",
+      "idade": 55,
+      "chance": 0.7,
+      "cenario": "hospital",
+      "titulo": "Susto no coração",
+      "texto": "Aquele check-up adiado cobrou a conta. Você precisa de um tratamento sério.",
+      "bloqueia": [
+        "saudavel"
+      ],
+      "escolhas": [
+        {
+          "texto": "Tratar no particular",
+          "somar": {
+            "dinheiro": -80000,
+            "felicidade": -10,
+            "saude": -10
+          },
+          "resultado": "Tratamento rápido e bom, por R$ 80.000."
+        },
+        {
+          "texto": "Esperar na fila pública",
+          "multiplicar": {
+            "renda": 0.8
+          },
+          "somar": {
+            "felicidade": -20,
+            "saude": -25
+          },
+          "resultado": "A espera foi longa e você ficou afastado. Sua renda caiu 20%."
+        }
+      ]
+    },
+    {
+      "id": "casa_praia",
+      "idade": 57,
+      "grupo": "sonho57",
+      "cenario": "praia",
+      "titulo": "Sonho na praia",
+      "texto": "Uma casinha na praia por R$ 300.000. Seria o lugar perfeito pra velhice...",
+      "escolhas": [
+        {
+          "texto": "Comprar a casa de praia",
+          "minimo": {
+            "liquidez": 150000
+          },
+          "somar": {
+            "dinheiro": -300000,
+            "bens": 300000,
+            "custo": 1500,
+            "felicidade": 15,
+            "estresse": -10
+          },
+          "resultado": "A casa é sua! Mais R$ 1.500/mês de manutenção e IPTU."
+        },
+        {
+          "texto": "Alugar só nas férias",
+          "somar": {
+            "dinheiro": -10000,
+            "felicidade": 8,
+            "estresse": -8
+          },
+          "resultado": "Férias maravilhosas, por R$ 10.000, e sem dor de cabeça."
+        },
+        {
+          "texto": "Reforçar a aposentadoria",
+          "somar": {
+            "aporte": 0.1,
+            "felicidade": -3
+          },
+          "resultado": "Mais 10% da renda vai pros investimentos todo mês."
+        }
+      ]
+    },
+    {
+      "id": "sitio",
+      "idade": 57,
+      "grupo": "sonho57",
+      "cenario": "casa",
+      "titulo": "Sítio no interior",
+      "texto": "Um sítio com pomar e lago está à venda por R$ 250.000. Ar puro pra velhice...",
+      "escolhas": [
+        {
+          "texto": "Comprar o sítio",
+          "minimo": {
+            "liquidez": 125000
+          },
+          "somar": {
+            "dinheiro": -250000,
+            "bens": 250000,
+            "custo": 1200,
+            "felicidade": 15,
+            "saude": 5,
+            "estresse": -15
+          },
+          "resultado": "Galinhas, pé de manga e R$ 1.200/mês de caseiro e manutenção."
+        },
+        {
+          "texto": "Alugar um sítio nos feriados",
+          "somar": {
+            "dinheiro": -6000,
+            "felicidade": 6,
+            "estresse": -8
+          },
+          "resultado": "Feriados no mato por R$ 6 mil."
+        },
+        {
+          "texto": "Reforçar a aposentadoria",
+          "somar": {
+            "aporte": 0.1,
+            "felicidade": -3
+          },
+          "resultado": "Mais 10% da renda pros investimentos."
+        }
+      ]
+    },
+    {
+      "id": "imovel_aluguel",
+      "idade": 58,
+      "cenario": "cidade",
+      "titulo": "Renda de aluguel",
+      "texto": "Um corretor oferece um apartamento de R$ 250.000 que já vem com inquilino pagando R$ 1.200/mês.",
+      "escolhas": [
+        {
+          "texto": "Comprar o apê",
+          "minimo": {
+            "liquidez": 250000
+          },
+          "somar": {
+            "dinheiro": -250000,
+            "bens": 250000,
+            "renda": 1200,
+            "felicidade": 3
+          },
+          "resultado": "Agora você é proprietário: mais {salario:1200}/mês de aluguel."
+        },
+        {
+          "texto": "Deixar investido",
+          "resultado": "Seu dinheiro continua rendendo sem dor de cabeça com inquilino."
+        }
+      ]
+    },
+    {
+      "id": "nome_sujo_59",
+      "idade": 59,
+      "cenario": "banco",
+      "titulo": "Nome sujo",
+      "texto": "Seu nome foi parar na lista de devedores. A dívida já passou de R$ 30 mil e os juros não param de crescer.",
+      "minimo": {
+        "divida": 30000
+      },
+      "escolhas": [
+        {
+          "texto": "Renegociar no feirão",
+          "multiplicar": {
+            "divida": 0.5
+          },
+          "somar": {
+            "felicidade": -5,
+            "estresse": -5
+          },
+          "resultado": "O banco topou um desconto de 50%. Ainda dói, mas agora dá pra respirar."
+        },
+        {
+          "texto": "Cortar gastos ao máximo",
+          "multiplicar": {
+            "custo": 0.6
+          },
+          "somar": {
+            "felicidade": -12,
+            "estresse": 10
+          },
+          "resultado": "Sem lazer, sem extras. Suas contas fixas caíram 40%, e o dinheiro que sobra vai todo pra dívida."
+        },
+        {
+          "texto": "Fingir que não é comigo",
+          "somar": {
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "As ligações de cobrança continuam. E os juros também."
+        }
+      ]
+    },
+    {
+      "id": "golpe",
+      "idade": 60,
+      "grupo": "golpe60",
+      "cenario": "banco",
+      "titulo": "Assessor simpático",
+      "texto": "Um \"assessor\" muito simpático oferece um investimento GARANTIDO de 3% ao mês. \"Só pra clientes especiais.\"",
+      "escolhas": [
+        {
+          "texto": "Investir metade",
+          "multiplicar": {
+            "investimentos": 0.5
+          },
+          "somar": {
+            "felicidade": -15,
+            "estresse": 20
+          },
+          "resultado": "Golpe. O \"assessor\" sumiu com metade dos seus investimentos.",
+          "flags": [
+            "caiu_golpe"
+          ]
+        },
+        {
+          "texto": "Desconfiar e denunciar",
+          "somar": {
+            "felicidade": 5
+          },
+          "resultado": "Nada que é garantido rende 3% ao mês. Você denunciou e ele foi preso!",
+          "flags": [
+            "desconfiou_golpe"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golpe_whatsapp",
+      "idade": 60,
+      "grupo": "golpe60",
+      "cenario": "casa",
+      "titulo": "Número novo",
+      "texto": "Mensagem no WhatsApp: \"Oi, sou eu, seu sobrinho! Troquei de número. Preciso de um Pix de R$ 4.800 urgente!\"",
+      "escolhas": [
+        {
+          "texto": "Fazer o Pix na hora",
+          "somar": {
+            "dinheiro": -4800,
+            "felicidade": -10
+          },
+          "flags": [
+            "caiu_golpe"
+          ],
+          "resultado": "Era golpe. Seu sobrinho estava em casa, com o número de sempre."
+        },
+        {
+          "texto": "Ligar pro número antigo",
+          "somar": {
+            "felicidade": 3
+          },
+          "flags": [
+            "desconfiou_golpe"
+          ],
+          "resultado": "Seu sobrinho atendeu tranquilo. Você bloqueou e denunciou o golpista."
+        }
+      ]
+    },
+    {
+      "id": "golpe_ligacao",
+      "idade": 60,
+      "grupo": "golpe60",
+      "cenario": "banco",
+      "titulo": "Central do banco",
+      "texto": "Ligação: \"Aqui é da central do seu banco. Detectamos uma compra suspeita. Confirme seus dados e senha pra cancelar.\"",
+      "escolhas": [
+        {
+          "texto": "Passar os dados",
+          "multiplicar": {
+            "dinheiro": 0.2
+          },
+          "somar": {
+            "felicidade": -15,
+            "estresse": 15
+          },
+          "flags": [
+            "caiu_golpe"
+          ],
+          "resultado": "Era golpe. Limparam 80% da sua conta em minutos."
+        },
+        {
+          "texto": "Desligar e ligar pro banco",
+          "somar": {
+            "felicidade": 3
+          },
+          "flags": [
+            "desconfiou_golpe"
+          ],
+          "resultado": "Banco nenhum pede senha por telefone. Golpe evitado!"
+        }
+      ]
+    },
+    {
+      "id": "viagem_sonho",
+      "idade": 61,
+      "grupo": "viagem61",
+      "cenario": "aeroporto",
+      "titulo": "A viagem dos sonhos",
+      "texto": "Você sempre sonhou em conhecer o mundo. Se não for agora, quando?",
+      "escolhas": [
+        {
+          "texto": "Volta ao mundo!",
+          "somar": {
+            "dinheiro": -60000,
+            "felicidade": 20,
+            "estresse": -20
+          },
+          "resultado": "Paris, Tóquio, Cairo... R$ 60.000 em memórias para sempre."
+        },
+        {
+          "texto": "Viagem pelo Brasil",
+          "somar": {
+            "dinheiro": -12000,
+            "felicidade": 10,
+            "estresse": -12
+          },
+          "resultado": "Nordeste, Pantanal, serra gaúcha. Lindo e mais barato."
+        },
+        {
+          "texto": "Ficar em casa",
+          "somar": {
+            "felicidade": -2
+          },
+          "resultado": "Talvez um dia."
+        }
+      ]
+    },
+    {
+      "id": "cruzeiro",
+      "idade": 61,
+      "grupo": "viagem61",
+      "cenario": "praia",
+      "titulo": "Cruzeiro dos 60",
+      "texto": "Uma agência oferece um cruzeiro pela costa brasileira: R$ 15.000.",
+      "escolhas": [
+        {
+          "texto": "Embarcar!",
+          "somar": {
+            "dinheiro": -15000,
+            "felicidade": 15,
+            "estresse": -15
+          },
+          "resultado": "Oito dias de mar, shows e buffet. Que vida!"
+        },
+        {
+          "texto": "Chamar a família pra um churrasco",
+          "somar": {
+            "dinheiro": -1000,
+            "felicidade": 10
+          },
+          "resultado": "Todo mundo reunido no quintal. Melhor que navio."
+        },
+        {
+          "texto": "Guardar o dinheiro",
+          "somar": {
+            "felicidade": -2
+          },
+          "resultado": "Fica pra depois."
+        }
+      ]
+    },
+    {
+      "id": "quitou_casa",
+      "idade": 62,
+      "cenario": "casa",
+      "titulo": "Casa quitada!",
+      "texto": "A última parcela do financiamento foi paga. 30 anos depois, a casa é 100% sua.",
+      "requer": [
+        "financiamento"
+      ],
+      "escolhas": [
+        {
+          "texto": "Que alívio!",
+          "somar": {
+            "custo": -1800,
+            "felicidade": 10,
+            "estresse": -10
+          },
+          "removerFlags": [
+            "financiamento"
+          ],
+          "resultado": "Menos R$ 1.800/mês de gastos."
+        }
+      ]
+    },
+    {
+      "id": "aposentar",
+      "idade": 63,
+      "cenario": "escritorio",
+      "titulo": "Hora de parar?",
+      "texto": "Você já pode se aposentar, mas a aposentadoria paga só metade do seu salário.",
+      "escolhas": [
+        {
+          "texto": "Aposentar agora",
+          "multiplicar": {
+            "renda": 0.5
+          },
+          "somar": {
+            "felicidade": 15,
+            "estresse": -30,
+            "saude": 5
+          },
+          "resultado": "Chega de despertador! Sua renda caiu pela metade."
+        },
+        {
+          "texto": "Trabalhar até os 65",
+          "somar": {
+            "felicidade": -5,
+            "estresse": 10
+          },
+          "resultado": "Mais dois anos de batalha."
+        }
+      ]
+    }
+  ],
+  "imprevistos": [
+    {
+      "id": "assalto",
+      "idade": 18,
+      "idadeMax": 64,
+      "chance": 0.045,
+      "maxVezes": 3,
+      "cenario": "rua",
+      "titulo": "Assalto!",
+      "texto": "Voltando pra casa à noite, dois caras numa moto te abordam: \"Passa o celular e a carteira, rapidinho!\"",
+      "escolhas": [
+        {
+          "texto": "Entregar tudo e fazer B.O.",
+          "somar": {
+            "dinheiro": -2500,
+            "felicidade": -8,
+            "estresse": 15
+          },
+          "resultado": "Levaram o celular e R$ 300 da carteira. Celular novo, segunda via de documentos... prejuízo de R$ 2.500. Mas você está vivo."
+        },
+        {
+          "texto": "Reagir",
+          "sorte": {
+            "chance": 0.25,
+            "sucesso": {
+              "somar": {
+                "felicidade": -5
+              },
+              "resultado": "Você gritou, o pessoal da rua apareceu e eles fugiram. Sorte grande. Nunca mais faça isso."
+            },
+            "fracasso": {
+              "somar": {
+                "dinheiro": -15000,
+                "felicidade": -25,
+                "saude": -20
+              },
+              "resultado": "Levou uma coronhada e foi parar no hospital. Além do celular, R$ 15.000 em tratamento e dias sem trabalhar. Nunca reaja."
+            }
+          },
+          "somar": {
+            "estresse": 10
+          }
+        },
+        {
+          "texto": "Entregar o \"celular do ladrão\"",
+          "minimo": {
+            "dinheiro": 500
+          },
+          "somar": {
+            "dinheiro": -500,
+            "felicidade": -3,
+            "estresse": 5
+          },
+          "resultado": "Você andava com um celular velho só pra isso. Perdeu só R$ 500. Malandragem de quem mora em cidade grande!"
+        }
+      ]
+    },
+    {
+      "id": "golpe_pix",
+      "idade": 22,
+      "idadeMax": 64,
+      "chance": 0.035,
+      "maxVezes": 2,
+      "cenario": "banco",
+      "titulo": "\"Oi, troquei de número\"",
+      "texto": "Mensagem no WhatsApp com a foto da sua mãe: \"Oi filho, troquei de número. Me faz um Pix de R$ 2.800? Te devolvo amanhã!\"",
+      "escolhas": [
+        {
+          "texto": "Fazer o Pix rapidinho",
+          "somar": {
+            "dinheiro": -2800,
+            "felicidade": -10,
+            "estresse": 10
+          },
+          "flags": [
+            "caiu_golpe"
+          ],
+          "resultado": "Era golpe. Sua mãe nem sabe fazer Pix. Os R$ 2.800 sumiram."
+        },
+        {
+          "texto": "Ligar pra ela antes",
+          "somar": {
+            "felicidade": 3
+          },
+          "resultado": "\"Que número novo, menino? Tô aqui vendo novela!\" Golpe evitado."
+        }
+      ]
+    },
+    {
+      "id": "dengue",
+      "idade": 18,
+      "idadeMax": 64,
+      "chance": 0.04,
+      "maxVezes": 2,
+      "cenario": "hospital",
+      "titulo": "Dengue",
+      "texto": "Febre alta, dor atrás dos olhos, corpo moído... o mosquito te pegou. Você está com dengue.",
+      "escolhas": [
+        {
+          "texto": "Ir ao posto de saúde",
+          "somar": {
+            "dinheiro": -300,
+            "felicidade": -6,
+            "saude": -8
+          },
+          "resultado": "O posto do SUS te atendeu, fez os exames e mandou pra casa com soro e repouso. Uma semana de cama."
+        },
+        {
+          "texto": "Tratar em casa por conta",
+          "sorte": {
+            "chance": 0.7,
+            "sucesso": {
+              "somar": {
+                "felicidade": -6,
+                "saude": -8
+              },
+              "resultado": "Muita água, repouso e paciência. Passou."
+            },
+            "fracasso": {
+              "somar": {
+                "dinheiro": -6000,
+                "felicidade": -15,
+                "saude": -20
+              },
+              "resultado": "Era dengue grave. Você foi parar no hospital, internado por dias."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pandemia",
+      "idade": 25,
+      "idadeMax": 60,
+      "chance": 0.025,
+      "maxVezes": 1,
+      "cenario": "hospital",
+      "titulo": "Pandemia",
+      "texto": "Um vírus novo parou o país: lockdown, comércio fechado... e você pegou a doença. Está bem mal.",
+      "escolhas": [
+        {
+          "texto": "Hospital particular",
+          "somar": {
+            "dinheiro": -35000,
+            "felicidade": -12,
+            "saude": -15,
+            "estresse": 15
+          },
+          "multiplicar": {
+            "renda": 0.95
+          },
+          "resultado": "Dez dias internado, conta salgada de R$ 35.000. A empresa ainda cortou 5% do seu salário na crise."
+        },
+        {
+          "texto": "Confiar no SUS",
+          "multiplicar": {
+            "renda": 0.95
+          },
+          "sorte": {
+            "chance": 0.75,
+            "sucesso": {
+              "somar": {
+                "felicidade": -10,
+                "saude": -15
+              },
+              "resultado": "A equipe do SUS foi heroica e você se recuperou. Viva o SUS! (A empresa cortou 5% do salário na crise.)"
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -25,
+                "saude": -30
+              },
+              "multiplicar": {
+                "renda": 0.85
+              },
+              "resultado": "Foram semanas de UTI e meses de sequelas. Você voltou a trabalhar ganhando menos."
+            }
+          },
+          "somar": {
+            "estresse": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "acidente_trabalho",
+      "idade": 19,
+      "idadeMax": 60,
+      "chance": 0.025,
+      "maxVezes": 1,
+      "cenario": "escritorio",
+      "titulo": "Acidente de trabalho",
+      "texto": "Você escorregou na escada do trabalho e quebrou o braço. O médico deu 90 dias de afastamento.",
+      "escolhas": [
+        {
+          "texto": "Pegar o auxílio do INSS",
+          "somar": {
+            "dinheiro": -6000,
+            "felicidade": -10,
+            "saude": -10,
+            "estresse": 10
+          },
+          "resultado": "Fila, perícia, papelada... o auxílio do INSS saiu, mas menor que o salário. Três meses no aperto: R$ 6.000 a menos."
+        },
+        {
+          "texto": "Voltar antes da hora",
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "felicidade": -5,
+                "saude": -10
+              },
+              "resultado": "Deu certo, mas foi no sacrifício."
+            },
+            "fracasso": {
+              "somar": {
+                "dinheiro": -15000,
+                "felicidade": -18,
+                "saude": -25
+              },
+              "multiplicar": {
+                "renda": 0.9
+              },
+              "resultado": "O braço não calcificou direito e precisou de cirurgia. Agora você tem uma limitação e ganha menos."
+            }
+          },
+          "somar": {
+            "estresse": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "geladeira",
+      "idade": 20,
+      "idadeMax": 64,
+      "chance": 0.035,
+      "maxVezes": 2,
+      "cenario": "casa",
+      "titulo": "Queimou!",
+      "texto": "Caiu um raio no poste, a luz piscou... e a geladeira morreu. Com toda a comida dentro.",
+      "escolhas": [
+        {
+          "texto": "Comprar nova à vista",
+          "somar": {
+            "dinheiro": -3500
+          },
+          "resultado": "Geladeira nova por R$ 3.500. Ter uma reserva de emergência salva nessas horas."
+        },
+        {
+          "texto": "Parcelar em 18x no carnê",
+          "somar": {
+            "divida": 5500,
+            "felicidade": 3,
+            "estresse": 5
+          },
+          "resultado": "\"Só R$ 300 por mês!\" Com os juros do carnê, ela saiu por R$ 5.500."
+        },
+        {
+          "texto": "Mandar consertar",
+          "sorte": {
+            "chance": 0.5,
+            "sucesso": {
+              "somar": {
+                "dinheiro": -600
+              },
+              "resultado": "O técnico trocou o compressor por R$ 600. Ressuscitou!"
+            },
+            "fracasso": {
+              "somar": {
+                "dinheiro": -4100,
+                "felicidade": -5
+              },
+              "resultado": "Gastou R$ 600 no conserto, ela pifou de novo e você teve que comprar outra."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "furto_casa",
+      "idade": 25,
+      "idadeMax": 64,
+      "chance": 0.02,
+      "maxVezes": 1,
+      "cenario": "casa",
+      "titulo": "Casa arrombada",
+      "texto": "Você voltou do feriado e a porta estava arrombada. Levaram a TV, o notebook e as joias da família.",
+      "escolhas": [
+        {
+          "texto": "Repor e instalar câmeras",
+          "somar": {
+            "dinheiro": -15000,
+            "felicidade": -6,
+            "estresse": 15
+          },
+          "resultado": "R$ 15.000 entre repor tudo, grade, alarme e câmeras. Pelo menos agora você dorme tranquilo."
+        },
+        {
+          "texto": "Só repor o essencial",
+          "somar": {
+            "dinheiro": -7000,
+            "felicidade": -12,
+            "estresse": 25
+          },
+          "resultado": "R$ 7.000 pro básico. A sensação de insegurança ficou."
+        }
+      ]
+    },
+    {
+      "id": "crise_inflacao",
+      "idade": 20,
+      "idadeMax": 64,
+      "chance": 0.03,
+      "maxVezes": 2,
+      "cenario": "loja",
+      "titulo": "Tudo subiu!",
+      "texto": "Crise econômica: a inflação disparou. Arroz, feijão, gasolina, aluguel... tudo ficou mais caro.",
+      "escolhas": [
+        {
+          "texto": "Trocar de marca e pesquisar preço",
+          "somar": {
+            "custo": 150,
+            "felicidade": -5,
+            "estresse": 5
+          },
+          "resultado": "Atacarejo, marca própria e feira no fim da xepa. Seus gastos subiram só R$ 150/mês."
+        },
+        {
+          "texto": "Manter o padrão",
+          "somar": {
+            "custo": 600,
+            "estresse": 5
+          },
+          "resultado": "Nada mudou na sua rotina... exceto a conta: mais R$ 600/mês."
+        }
+      ]
+    },
+    {
+      "id": "carro_batido",
+      "idade": 25,
+      "idadeMax": 64,
+      "chance": 0.035,
+      "maxVezes": 2,
+      "cenario": "rua",
+      "titulo": "Bateram no seu carro",
+      "texto": "No trânsito, um motorista bateu na traseira do seu carro... e fugiu sem deixar contato.",
+      "requer": [
+        "tem_carro"
+      ],
+      "escolhas": [
+        {
+          "texto": "Acionar o seguro",
+          "somar": {
+            "dinheiro": -2500,
+            "felicidade": -4,
+            "estresse": 8
+          },
+          "resultado": "O seguro cobriu, mas você pagou R$ 2.500 de franquia."
+        },
+        {
+          "texto": "Funilaria do bairro",
+          "somar": {
+            "dinheiro": -1800,
+            "felicidade": -2,
+            "estresse": 8
+          },
+          "resultado": "O seu Zé da funilaria deixou novinho por R$ 1.800 em dinheiro."
+        }
+      ]
+    },
+    {
+      "id": "carro_roubado",
+      "idade": 25,
+      "idadeMax": 64,
+      "chance": 0.02,
+      "maxVezes": 1,
+      "cenario": "rua",
+      "titulo": "Cadê o carro?",
+      "texto": "Você saiu de manhã e o carro não estava mais na rua. Foi roubado durante a noite.",
+      "requer": [
+        "tem_carro"
+      ],
+      "escolhas": [
+        {
+          "texto": "Acionar o seguro",
+          "somar": {
+            "dinheiro": -4000,
+            "felicidade": -8,
+            "estresse": 15
+          },
+          "resultado": "Dois meses de burocracia e R$ 4.000 de franquia, mas você recebeu outro carro."
+        },
+        {
+          "texto": "Ficar sem carro",
+          "somar": {
+            "custo": -400,
+            "felicidade": -15,
+            "estresse": 15
+          },
+          "removerFlags": [
+            "tem_carro"
+          ],
+          "resultado": "Sem seguro, sem carro. Volta o ônibus... mas pelo menos acabaram os gastos com ele."
+        }
+      ]
+    },
+    {
+      "id": "ipva_multas",
+      "idade": 26,
+      "idadeMax": 64,
+      "chance": 0.04,
+      "maxVezes": 2,
+      "cenario": "rua",
+      "titulo": "Janeiro chegou",
+      "texto": "IPVA, licenciamento, seguro e ainda duas multas por radar que você nem lembrava. Tudo no mesmo mês.",
+      "requer": [
+        "tem_carro"
+      ],
+      "escolhas": [
+        {
+          "texto": "Pagar tudo à vista",
+          "somar": {
+            "dinheiro": -4000,
+            "felicidade": -3,
+            "estresse": 8
+          },
+          "resultado": "R$ 4.000 de uma vez, com desconto do IPVA à vista."
+        },
+        {
+          "texto": "Parcelar no cartão",
+          "somar": {
+            "divida": 5000,
+            "estresse": 8
+          },
+          "resultado": "Parcelou tudo, mas com juros virou R$ 5.000 de dívida."
+        }
+      ]
+    },
+    {
+      "id": "cunhado",
+      "idade": 28,
+      "idadeMax": 60,
+      "chance": 0.03,
+      "maxVezes": 1,
+      "cenario": "casa",
+      "titulo": "Visita que não vai embora",
+      "texto": "Seu cunhado perdeu o emprego e pergunta se pode ficar na sua casa \"só por um tempinho\".",
+      "requer": [
+        "casado"
+      ],
+      "escolhas": [
+        {
+          "texto": "Receber o cunhado",
+          "somar": {
+            "dinheiro": -8000,
+            "felicidade": -5,
+            "estresse": 15
+          },
+          "resultado": "O \"tempinho\" durou oito meses. Ele comeu bem, usou o Wi-Fi e custou uns R$ 8.000. Mas a família ficou grata."
+        },
+        {
+          "texto": "Ajudar a arrumar emprego",
+          "somar": {
+            "dinheiro": -1000,
+            "felicidade": 2
+          },
+          "resultado": "Você mandou o currículo dele pra todo mundo e pagou um curso rápido. Em um mês ele estava empregado!"
+        },
+        {
+          "texto": "Dizer não",
+          "somar": {
+            "felicidade": -10,
+            "estresse": 5
+          },
+          "resultado": "O clima nos almoços de família nunca mais foi o mesmo."
+        }
+      ]
+    },
+    {
+      "id": "celular_quebrou",
+      "idade": 18,
+      "idadeMax": 64,
+      "chance": 0.035,
+      "maxVezes": 2,
+      "cenario": "rua",
+      "titulo": "Tela trincada",
+      "texto": "O celular escorregou da sua mão no ônibus e a tela virou uma teia de aranha.",
+      "escolhas": [
+        {
+          "texto": "Trocar a tela na assistência",
+          "somar": {
+            "dinheiro": -600
+          },
+          "resultado": "R$ 600 na assistência técnica da esquina. Novo de novo."
+        },
+        {
+          "texto": "Usar trincado mesmo",
+          "somar": {
+            "felicidade": -4,
+            "estresse": 3
+          },
+          "resultado": "Cada mensagem agora é um quebra-cabeça. Mas funciona!"
+        }
+      ]
+    },
+    {
+      "id": "enchente_rua",
+      "idade": 20,
+      "idadeMax": 64,
+      "chance": 0.02,
+      "maxVezes": 1,
+      "cenario": "rua",
+      "titulo": "Chuva de verão",
+      "texto": "Uma tempestade de fim de tarde alagou a cidade inteira. Você ficou preso no trânsito por horas e a água invadiu o ônibus.",
+      "escolhas": [
+        {
+          "texto": "Esperar a água baixar",
+          "somar": {
+            "felicidade": -3,
+            "estresse": 8
+          },
+          "resultado": "Chegou em casa de madrugada, encharcado. Mais uma história pra contar."
+        },
+        {
+          "texto": "Pegar um carro de app",
+          "somar": {
+            "dinheiro": -250,
+            "felicidade": -1
+          },
+          "resultado": "Tarifa dinâmica: R$ 250 por uma corrida de 10 km."
+        }
+      ]
+    },
+    {
+      "id": "doenca_grave",
+      "idade": 25,
+      "idadeMax": 64,
+      "chance": 0.3,
+      "maxVezes": 2,
+      "cenario": "hospital",
+      "titulo": "O corpo cobrou",
+      "maximo": {
+        "saude": 35
+      },
+      "texto": "Depois de anos de descuido, veio uma doença séria. Você precisa de tratamento urgente.",
+      "escolhas": [
+        {
+          "texto": "Tratar no particular",
+          "somar": {
+            "dinheiro": -60000,
+            "saude": 30,
+            "estresse": 10,
+            "felicidade": -10
+          },
+          "resultado": "R$ 60 mil, mas o tratamento foi rápido e você se recuperou bem."
+        },
+        {
+          "texto": "Tratamento pelo SUS",
+          "somar": {
+            "felicidade": -10,
+            "estresse": 10
+          },
+          "sorte": {
+            "chance": 0.6,
+            "sucesso": {
+              "somar": {
+                "saude": 25
+              },
+              "resultado": "O SUS cuidou de você com carinho. Demorou, mas funcionou."
+            },
+            "fracasso": {
+              "somar": {
+                "saude": 10,
+                "felicidade": -10
+              },
+              "multiplicar": {
+                "renda": 0.7
+              },
+              "resultado": "A fila foi longa e o tratamento atrasou. Você teve que reduzir o trabalho."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "burnout",
+      "idade": 22,
+      "idadeMax": 64,
+      "chance": 0.3,
+      "maxVezes": 2,
+      "cenario": "escritorio",
+      "titulo": "Burnout",
+      "minimo": {
+        "estresse": 75
+      },
+      "texto": "Você não consegue mais levantar da cama. O médico é direto: burnout.",
+      "escolhas": [
+        {
+          "texto": "Afastamento e terapia",
+          "somar": {
+            "dinheiro": -8000,
+            "estresse": -40,
+            "saude": 5,
+            "felicidade": -5
+          },
+          "resultado": "Três meses de afastamento e terapia. Você aprendeu a dizer \"não\"."
+        },
+        {
+          "texto": "Pedir demissão e recomeçar",
+          "multiplicar": {
+            "renda": 0.6
+          },
+          "somar": {
+            "estresse": -50,
+            "felicidade": 5
+          },
+          "resultado": "Trocou o emprego estressante por um mais leve, ganhando 40% menos. Paz não tem preço."
+        },
+        {
+          "texto": "Continuar no tranco",
+          "somar": {
+            "saude": -20,
+            "estresse": 5,
+            "felicidade": -15
+          },
+          "resultado": "Você seguiu, mas o corpo e a mente pagaram caro."
+        }
+      ]
+    },
+    {
+      "id": "recaida_bet",
+      "idade": 21,
+      "idadeMax": 64,
+      "chance": 0.12,
+      "maxVezes": 4,
+      "cenario": "cassino",
+      "titulo": "Só mais uma rodada",
+      "requer": [
+        "viciado_bet"
+      ],
+      "texto": "O celular vibra: \"O Tigrinho está pagando AGORA! Bônus por tempo limitado!\" Aquela vontade de jogar volta...",
+      "escolhas": [
+        {
+          "texto": "Uma rodadinha (R$ 300)",
+          "cassino": true,
+          "somar": {
+            "dinheiro": -300,
+            "estresse": 5
+          },
+          "sorte": {
+            "chance": 0.3,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 600
+              },
+              "resultado": "Ganhou R$ 600! E a vontade de jogar só aumentou..."
+            },
+            "fracasso": {
+              "resultado": "Perdeu R$ 300. Mais uma vez."
+            }
+          }
+        },
+        {
+          "texto": "APOSTAR TUDO pra dobrar",
+          "cassino": true,
+          "flags": [
+            "apostou"
+          ],
+          "sorte": {
+            "chance": 0.01,
+            "sucesso": {
+              "multiplicar": {
+                "dinheiro": 2,
+                "investimentos": 2
+              },
+              "somar": {
+                "felicidade": 30
+              },
+              "flags": [
+                "dobrou_tigrinho",
+                "viciado_bet"
+              ],
+              "resultado": "O TIGRINHO SOLTOU A CARTA! Você DOBROU tudo o que tinha! A chance era de 1%... não tente de novo."
+            },
+            "fracasso": {
+              "multiplicar": {
+                "dinheiro": 0,
+                "investimentos": 0
+              },
+              "somar": {
+                "felicidade": -25,
+                "estresse": 30
+              },
+              "flags": [
+                "quebrou_tigrinho"
+              ],
+              "resultado": "Perdeu TUDO. Saldo e investimentos zerados em 30 segundos. A casa sempre ganha."
+            }
+          }
+        },
+        {
+          "texto": "Procurar ajuda",
+          "somar": {
+            "dinheiro": -1500,
+            "estresse": -10,
+            "felicidade": 5
+          },
+          "removerFlags": [
+            "viciado_bet"
+          ],
+          "flags": [
+            "largou_bet"
+          ],
+          "resultado": "Terapia e grupo de apoio. Você bloqueou os sites de aposta. Liberdade!"
+        }
+      ]
+    },
+    {
+      "id": "acidente_entrega",
+      "idade": 21,
+      "idadeMax": 60,
+      "chance": 0.06,
+      "maxVezes": 1,
+      "cenario": "rua",
+      "titulo": "Acidente na entrega",
+      "requer": [
+        "entregador"
+      ],
+      "texto": "Um carro te fechou durante uma entrega e você foi pro chão.",
+      "escolhas": [
+        {
+          "texto": "Hospital público",
+          "somar": {
+            "saude": -20,
+            "estresse": 15,
+            "dinheiro": -1500
+          },
+          "resultado": "Fratura na perna e dois meses parado, sem ganhar nada das entregas."
+        },
+        {
+          "texto": "Seguir trabalhando com dor",
+          "somar": {
+            "saude": -30,
+            "felicidade": -5
+          },
+          "resultado": "Você não parou. A lesão virou dor crônica."
+        }
+      ]
+    },
+    {
+      "id": "operacao_policial",
+      "idade": 18,
+      "idadeMax": 64,
+      "chance": 0.06,
+      "maxVezes": 3,
+      "cenario": "comunidade",
+      "titulo": "Operação policial",
+      "requer": [
+        "dificil"
+      ],
+      "texto": "Operação policial na comunidade: tiros de madrugada, escolas fechadas e ônibus sem circular por três dias.",
+      "escolhas": [
+        {
+          "texto": "Ficar em casa",
+          "somar": {
+            "dinheiro": -400,
+            "estresse": 15
+          },
+          "resultado": "Três dias sem trabalhar: R$ 400 a menos e o coração na mão."
+        },
+        {
+          "texto": "Arriscar sair pra trabalhar",
+          "somar": {
+            "estresse": 20
+          },
+          "sorte": {
+            "chance": 0.8,
+            "sucesso": {
+              "resultado": "Você conseguiu chegar ao trabalho, morrendo de medo."
+            },
+            "fracasso": {
+              "somar": {
+                "saude": -15,
+                "estresse": 10
+              },
+              "resultado": "Você se machucou na correria e precisou de atendimento."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "leptospirose",
+      "idade": 18,
+      "idadeMax": 64,
+      "chance": 0.04,
+      "maxVezes": 1,
+      "cenario": "comunidade",
+      "titulo": "Água de enchente",
+      "requer": [
+        "dificil"
+      ],
+      "texto": "A chuva alagou a rua com água de esgoto. Dias depois: febre alta e dor nas pernas. Leptospirose.",
+      "escolhas": [
+        {
+          "texto": "Correr pro posto",
+          "somar": {
+            "saude": -12,
+            "dinheiro": -300
+          },
+          "resultado": "Diagnóstico rápido e antibiótico. Você se recuperou."
+        },
+        {
+          "texto": "Esperar passar",
+          "sorte": {
+            "chance": 0.4,
+            "sucesso": {
+              "somar": {
+                "saude": -10
+              },
+              "resultado": "Por sorte, era um caso leve."
+            },
+            "fracasso": {
+              "somar": {
+                "saude": -30,
+                "dinheiro": -5000
+              },
+              "resultado": "Piorou muito e você foi internado. Quase não conta a história."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "amigo_interesseiro",
+      "idade": 20,
+      "idadeMax": 60,
+      "chance": 0.06,
+      "maxVezes": 2,
+      "cenario": "mansao",
+      "titulo": "Amigo do clube",
+      "requer": [
+        "facil"
+      ],
+      "texto": "Um \"amigo\" do clube pede R$ 50.000 emprestados pra um \"negócio garantido\".",
+      "escolhas": [
+        {
+          "texto": "Emprestar",
+          "somar": {
+            "dinheiro": -50000
+          },
+          "sorte": {
+            "chance": 0.2,
+            "sucesso": {
+              "somar": {
+                "dinheiro": 55000
+              },
+              "resultado": "Ele devolveu com juros! Raridade."
+            },
+            "fracasso": {
+              "somar": {
+                "felicidade": -10,
+                "estresse": 10
+              },
+              "resultado": "Ele sumiu do clube. E do mapa."
+            }
+          }
+        },
+        {
+          "texto": "Dizer não",
+          "somar": {
+            "felicidade": -2
+          },
+          "resultado": "Amigo de verdade não pede R$ 50 mil."
+        }
+      ]
+    },
+    {
+      "id": "alerta_corpo",
+      "idade": 25,
+      "idadeMax": 64,
+      "maxVezes": 3,
+      "chance": 0.3,
+      "maximo": {
+        "saude": 30
+      },
+      "cenario": "hospital",
+      "titulo": "O corpo está avisando",
+      "texto": "Tontura, dor no peito e um cansaço que não passa. O médico do plantão foi sério: \"Se continuar assim, você não chega aos 65.\"",
+      "escolhas": [
+        {
+          "texto": "Parar tudo e se tratar",
+          "somar": {
+            "dinheiro": -8000,
+            "saude": 25,
+            "estresse": -20,
+            "felicidade": 5
+          },
+          "resultado": "Exames, remédios e um mês de licença. Você saiu outra pessoa."
+        },
+        {
+          "texto": "Academia e comida de verdade",
+          "somar": {
+            "custo": 400,
+            "saude": 15,
+            "estresse": -10
+          },
+          "flags": [
+            "saudavel"
+          ],
+          "resultado": "R$ 400/mês entre academia e feira. O corpo agradece."
+        },
+        {
+          "texto": "Ignorar, preciso trabalhar",
+          "somar": {
+            "estresse": 5,
+            "felicidade": -3
+          },
+          "resultado": "Um analgésico e de volta ao trabalho. O corpo vai cobrar."
+        }
+      ]
+    },
+    {
+      "id": "crise_ansiedade",
+      "idade": 20,
+      "idadeMax": 64,
+      "maxVezes": 3,
+      "chance": 0.3,
+      "minimo": {
+        "estresse": 80
+      },
+      "cenario": "casa",
+      "titulo": "Crise de ansiedade",
+      "texto": "Coração disparado e falta de ar no meio do expediente. Não é a primeira vez.",
+      "escolhas": [
+        {
+          "texto": "Começar terapia",
+          "somar": {
+            "custo": 350,
+            "estresse": -30,
+            "felicidade": 10
+          },
+          "resultado": "Toda semana, uma hora só sua. Aos poucos, o peso diminui."
+        },
+        {
+          "texto": "Tirar férias de verdade",
+          "somar": {
+            "dinheiro": -5000,
+            "estresse": -25,
+            "felicidade": 8
+          },
+          "resultado": "Celular desligado e pé na areia."
+        },
+        {
+          "texto": "Engolir o choro e seguir",
+          "somar": {
+            "estresse": 5,
+            "saude": -5
+          },
+          "resultado": "Ninguém percebeu. Por enquanto."
+        }
+      ]
+    },
+    {
+      "id": "tristeza_profunda",
+      "idade": 20,
+      "idadeMax": 64,
+      "maxVezes": 3,
+      "chance": 0.3,
+      "maximo": {
+        "felicidade": 15
+      },
+      "cenario": "casa",
+      "titulo": "Dias cinzentos",
+      "texto": "Faz meses que nada tem graça. Você trabalha, dorme e repete. Os amigos pararam de chamar.",
+      "escolhas": [
+        {
+          "texto": "Procurar um psicólogo",
+          "somar": {
+            "custo": 200,
+            "felicidade": 20,
+            "estresse": -15
+          },
+          "resultado": "Falar ajudou mais do que você imaginava. Pelo SUS ou particular, cuidar da mente é cuidar da vida."
+        },
+        {
+          "texto": "Reencontrar velhos amigos",
+          "somar": {
+            "dinheiro": -1000,
+            "felicidade": 12,
+            "estresse": -5
+          },
+          "resultado": "Um churrasco, muitas risadas e a sensação de que você não está sozinh{o}."
+        },
+        {
+          "texto": "Se fechar ainda mais",
+          "somar": {
+            "felicidade": -5,
+            "saude": -3
+          },
+          "resultado": "O silêncio pesa cada vez mais."
+        }
+      ]
+    }
+  ],
+  "dificuldades": [
+    {
+      "id": "facil",
+      "nome": "Fácil",
+      "titulo": "O HERDEIRO",
+      "cenario": "mansao",
+      "resumo": "Família rica, herança garantida e muito espaço pra errar.",
+      "inicial": {
+        "dinheiro": 30000,
+        "investimentos": 80000,
+        "felicidade": 70,
+        "saude": 85,
+        "estresse": 15
+      },
+      "modificadores": {
+        "consumo": 0.7,
+        "jurosDivida": 0.1,
+        "rendimento": 0.065,
+        "aumentoSalarial": 0.025,
+        "multSalario": 1.3,
+        "multImprevistos": 0.6,
+        "desgasteSaude": 0.3,
+        "estresseBase": 18
+      },
+      "historias": [
+        {
+          "inicio": "herdeiro_inicio",
+          "cenario": "mansao",
+          "texto": "Você é {nome}, de {cidade}, e nasceu em berço de ouro. Seu avô construiu uma rede de concessionárias e você cresceu entre viagens, escola bilíngue e motorista particular.\n\nAos 18 anos ganhou de presente um fundo de investimentos de R$ 80 mil e mais R$ 30 mil na conta.\n\nAgora, como herdeir{o} da família, a pergunta é uma só: você vai multiplicar a fortuna... ou torrar tudo?"
+        },
+        {
+          "inicio": "herdeiro_divorcio",
+          "cenario": "mansao",
+          "texto": "Você é {nome}, {filho} de um casal de empresários de {cidade}. Por fora, a família perfeita das colunas sociais. Por dentro, brigas em todos os jantares.\n\nNo seu aniversário de 18 anos, além de R$ 110 mil entre conta e investimentos, veio a notícia: seus pais vão se separar. E cada um quer que você siga um caminho diferente.\n\nDinheiro não falta. Paz, sim."
+        },
+        {
+          "inicio": "herdeiro_crise",
+          "cenario": "escritorio",
+          "texto": "Você é {nome}, net{o} do fundador das Concessionárias Aurora, orgulho de {cidade}. Cresceu ouvindo que a empresa seria sua um dia.\n\nO dia chegou mais cedo do que todos esperavam: as vendas despencaram, o banco está cobrando e seu avô, cansado, chamou você pra conversar. Na sua conta, R$ 110 mil que ainda são seus.\n\nÉ hora de provar que herdeir{o} também sabe trabalhar."
+        }
+      ]
+    },
+    {
+      "id": "medio",
+      "nome": "Médio",
+      "titulo": "A FAMÍLIA BATALHADORA",
+      "cenario": "casa",
+      "resumo": "Pais trabalhadores, contas no limite e muita vontade de crescer.",
+      "inicial": {
+        "dinheiro": 1500,
+        "felicidade": 60,
+        "saude": 75,
+        "estresse": 30
+      },
+      "modificadores": {
+        "consumo": 0.8,
+        "jurosDivida": 0.15,
+        "rendimento": 0.06,
+        "aumentoSalarial": 0.02,
+        "multSalario": 1,
+        "multImprevistos": 1,
+        "desgasteSaude": 0.6,
+        "estresseBase": 30
+      },
+      "historias": [
+        {
+          "inicio": "fim_escola",
+          "cenario": "casa",
+          "texto": "Você é {nome}, {filho} de uma professora de escola pública e de um motorista de ônibus de {cidade}. Em casa nunca faltou nada, mas também nunca sobrou: o carro é financiado, as férias são na casa da tia e a conta de luz sempre vira assunto no jantar.\n\nSeus pais juntaram R$ 1.500 pra você começar a vida.\n\nDá pra subir na vida... ou afundar junto com as contas. Agora é com você."
+        },
+        {
+          "inicio": "medio_pai_desempregado",
+          "cenario": "casa",
+          "texto": "Você é {nome}, de um bairro de classe média de {cidade}. Sua mãe é enfermeira e seu pai trabalhou 20 anos numa transportadora.\n\nNo seu último ano de escola, a transportadora fechou e seu pai ficou desempregado. Os R$ 1.500 que eles guardavam pra sua formatura agora são tudo o que você tem.\n\nA família precisa de você. E você precisa de um futuro."
+        },
+        {
+          "inicio": "medio_vestibular_fora",
+          "cenario": "aeroporto",
+          "texto": "Você é {nome} e sempre foi {o} estudios{o} da família em {cidade}. Seus pais, donos de uma papelaria, se orgulham de cada boletim.\n\nAos 18 anos veio a notícia: você passou num vestibular em outra cidade, a 500 km de casa. Seus pais conseguiram juntar R$ 1.500 pra ajudar.\n\nIr embora e arriscar, ou ficar perto de quem você ama?"
+        }
+      ]
+    },
+    {
+      "id": "dificil",
+      "nome": "Difícil",
+      "titulo": "CRIA DA QUEBRADA",
+      "cenario": "comunidade",
+      "resumo": "Nasceu na periferia: pouco dinheiro, saúde frágil e zero margem pra erro.",
+      "inicial": {
+        "dinheiro": 0,
+        "custo": 400,
+        "felicidade": 55,
+        "saude": 60,
+        "estresse": 45
+      },
+      "modificadores": {
+        "consumo": 0.85,
+        "jurosDivida": 0.22,
+        "rendimento": 0.055,
+        "aumentoSalarial": 0.015,
+        "multSalario": 0.8,
+        "multImprevistos": 1.4,
+        "desgasteSaude": 0.8,
+        "estresseBase": 45
+      },
+      "historias": [
+        {
+          "inicio": "periferia_inicio",
+          "cenario": "comunidade",
+          "texto": "Você é {nome} e cresceu no alto do morro, em {cidade}, numa casa de dois cômodos que sua mãe levantou tijolo por tijolo. Ela trabalha como diarista e cria você e mais dois irmãos sozinha.\n\nO posto de saúde vive lotado, o ônibus leva uma hora até o centro e o dinheiro nunca fecha. Aos 18 anos você já precisa ajudar em casa com R$ 400 por mês.\n\nAqui, uma doença ou uma dívida podem derrubar tudo. Cuide da saúde, fuja dos agiotas e prove que cria da quebrada também chega lá."
+        },
+        {
+          "inicio": "periferia_mae_doente",
+          "cenario": "hospital",
+          "texto": "Você é {nome}, da periferia de {cidade}. Sua mãe faz faxina desde os 14 anos e foi ela quem segurou a casa sozinha a vida inteira.\n\nSemana passada, ela travou a coluna no meio do trabalho. O médico do posto foi direto: nada de faxina por muito tempo. As contas, os remédios e os R$ 400 por mês da casa agora dependem de você.\n\nNinguém te perguntou se você estava pront{o}. A vida adulta chegou de uma vez."
+        },
+        {
+          "inicio": "periferia_peneira",
+          "cenario": "comunidade",
+          "texto": "Você é {nome}, de uma comunidade em {cidade}, e desde criança passa as tardes no campinho de terra do bairro. Todo mundo diz que você tem um dom.\n\nEm casa, o dinheiro é contado: sua avó aposentada sustenta quatro netos, e você precisa ajudar com R$ 400 por mês. Mas hoje um olheiro de um clube grande apareceu no campinho...\n\nTalento você tem. Agora falta a chance — e não desperdiçá-la."
+        }
+      ]
+    }
+  ],
+  "nomes": {
+    "homem": [
+      "Lucas",
+      "Gabriel",
+      "Rafael",
+      "Matheus",
+      "Pedro",
+      "Thiago",
+      "Bruno",
+      "Felipe",
+      "Gustavo",
+      "Diego",
+      "João",
+      "Caio",
+      "Vinícius",
+      "Leandro",
+      "Rodrigo",
+      "Igor",
+      "Wesley",
+      "Davi",
+      "Henrique",
+      "Samuel"
+    ],
+    "mulher": [
+      "Ana",
+      "Juliana",
+      "Larissa",
+      "Camila",
+      "Beatriz",
+      "Fernanda",
+      "Gabriela",
+      "Letícia",
+      "Mariana",
+      "Aline",
+      "Bruna",
+      "Jéssica",
+      "Carla",
+      "Vitória",
+      "Isabela",
+      "Priscila",
+      "Thaís",
+      "Raquel",
+      "Débora",
+      "Luana"
+    ]
+  },
+  "cidades": [
+    "São Paulo",
+    "Rio de Janeiro",
+    "Salvador",
+    "Recife",
+    "Fortaleza",
+    "Belo Horizonte",
+    "Porto Alegre",
+    "Curitiba",
+    "Manaus",
+    "Belém",
+    "Goiânia",
+    "São Luís",
+    "Natal",
+    "Campinas",
+    "Florianópolis",
+    "Cuiabá"
+  ]
+}
